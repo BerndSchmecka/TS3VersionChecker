@@ -24,7 +24,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
-using Updater;
 
 namespace TS3VersionChecker
 {
@@ -133,24 +132,6 @@ namespace TS3VersionChecker
 
             dispVer1 = displayableVersion;
             dispVer2 = displayableVersion2;
-
-            try
-            {
-                if (!File.Exists(System.Environment.CurrentDirectory + "\\" + "update.ini"))
-                {
-                    File.Create(System.Environment.CurrentDirectory + "\\" + "update.ini");
-                    AddFileSecurity(System.Environment.CurrentDirectory + "\\" + "update.ini", new SecurityIdentifier(WellKnownSidType.WorldSid, null), FileSystemRights.FullControl, AccessControlType.Allow);
-                }
-
-                INIFile updaterConfig = new INIFile(System.Environment.CurrentDirectory + "\\" + "update.ini");
-                updaterConfig.Write("Current", "currentVersion", buildNumber.ToString());
-                updaterConfig.Write("Current", "currentVersionName", buildName);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Error creating update.ini! Please restart Application as Administrator!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Application.Exit();
-            }
 
             this.Text = this.Text + " " + displayableVersion;
 
