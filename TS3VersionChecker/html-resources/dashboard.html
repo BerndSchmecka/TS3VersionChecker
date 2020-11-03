@@ -1,0 +1,391 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <script src="CefSharpBridge.js"></script>
+</head>
+
+<body>
+	<span class="menu">
+        <ul class="menu-options">
+        <li id="cut" class="menu-option">Cut</li>
+        <li id="copy" class="menu-option">Copy</li>
+        <li id="paste" class="menu-option">Paste</li>
+		<hr>
+        <li id="select_all" class="menu-option">Select All</li>
+        </ul>
+    </span>
+    <div style="text-align: left;" id="ts3versionchecker_ui">
+    <table style="padding-top: 25px; height:100%; width:100%;">
+		<tr>
+			<td style="width:33%">
+				<h1>Neueste Versionen</h1>
+				<div class="group_box" id="newest_versions" style="height:90%;">
+					<table style="width:100%;height:60%;padding-top: 15px;">
+						<tr>
+							<td>
+								<h1>TeamSpeak 3</h1>
+								<div class="group_box" id="nv_ts3" style="height:100%;position:relative;">
+									<center class="centerXY" style="width:100%;">
+										<table>
+											<tr>
+												<td>
+													<p>Beta:</p>
+												</td>
+												<td>
+													<p><b id="ts3beta">N/A</b></p>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<p>Stable:</p>
+												</td>
+												<td>
+													<p><b id="ts3stable">N/A</b></p>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<p>Server:</p>
+												</td>
+												<td>
+													<p><b id="ts3server">N/A</b></p>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<p>Alpha:</p>
+												</td>
+												<td>
+													<p><b id="ts3alpha">N/A</b></p>
+												</td>
+											</tr>
+										</table>
+									</center>
+								</div>
+							</td>
+							<td>
+								<h1>TeamSpeak 5</h1>
+								<div class="group_box" id="nv_ts5" style="height:100%;position:relative;">
+									<center class="centerXY" style="width:100%;">
+										<table>
+											<tr>
+												<td>
+													<p><br></p>
+												</td>
+												<td>
+													<p><br></p>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<p>Version:</p>
+												</td>
+												<td>
+													<p><b id="ts5version">N/A</b></p>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<p>Datum:</p>
+												</td>
+												<td>
+													<p><b id="ts5unix">N/A</b></p>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<p><br></p>
+												</td>
+												<td>
+													<p><br></p>
+												</td>
+											</tr>
+										</table>
+									</center>
+								</div>
+							</td>
+						</tr>
+					</table>
+					<center>
+						<table>
+							<tr>
+								<td>
+									<label class="switch">
+										<input type="checkbox" id="displayUNIX">
+										<span class="slider round"></span>
+									</label>
+								</td>
+								<td>
+									<a class="green_btn" id="show_verlist">Versionsliste anzeigen</a>
+								</td>
+							</tr>
+						</table>
+					</center>
+				</div>
+            </td>
+            <td style="width:33%">
+			    <h1>Nickname Resolver</h1>
+                <div class="group_box" id="nickname_resolver" style="height:90%; position: relative;">
+				<center class="centerXY">
+				        <h1></h1>
+						<table>
+						<tr>
+							<td>
+								<h1>Nickname:</h1>
+							</td>
+							<td>
+								<input class="textbox" type="text" name="NickName" id="tb_nickname" value="">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<h1>IP/Domain:</h1>
+							</td>
+							<td>
+								<input class="textbox" type="text" name="IPAddress" id="tb_ipaddress" value="">
+							</td>
+						</tr>
+					</table>
+                    <a class="green_btn" id="nick_btn">Nickname auflösen</a>
+					</center>
+                </div>
+            </td>
+			<td style="width:33%">
+				<h1>Liste der Badges (<a id="listdate">N/A</a>)</h1>
+			    <select class="listbox scrollable" id="lbBadges" size="5" style="width:100%;height:90%;">
+                </select>
+			</td>
+        </tr>
+		<tr>
+		    <td style="width:33%">
+			    <h1>Aktuelles Serverdatum</h1>
+                <div class="group_box" id="currServerDate" style="height:34.5%; position: relative;">
+				    <span class="centerY">
+					<table>
+						<tr>
+							<td>
+								<p>HTTP-String:</p>
+							</td>
+							<td>
+								<p><b id="nowhttp">N/A</b></p>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<p>Ortszeit:</p>
+							</td>
+							<td>
+								<p><b id="nowlocal">N/A</b></p>
+							</td>
+							</tr>
+						<tr>
+							<td>
+								<p>Unixzeit:</p>
+							</td>
+							<td>
+								<p><b id="nowunix">N/A</b></p>
+							</td>
+						</tr>
+					</table>
+					</span>
+                </div>
+				<h1>Letzte Änderung der Updatedatenbank</h1>
+                <div class="group_box" id="lastChangedUpdateDB" style="height:34.5%; position:relative;">
+				    <span class="centerY">
+					<table>
+						<tr>
+							<td>
+								<p>HTTP-String:</p>
+							</td>
+							<td>
+								<p><b id="udbhttp">N/A</b></p>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<p>Ortszeit:</p>
+							</td>
+							<td>
+								<p><b id="udblocal">N/A</b></p>
+							</td>
+							</tr>
+						<tr>
+							<td>
+								<p>Unixzeit:</p>
+							</td>
+							<td>
+								<p><b id="udbunix">N/A</b></p>
+							</td>
+						</tr>
+					</table>
+					</span>
+                </div>
+			</td>
+			<td style="width:33%">
+			    <h1>Letzte Änderung der Updatedatenbank (TeamSpeak 5)</h1>
+                <div class="group_box" id="lastChangedUpdateDBFive" style="height:34.5%; position:relative;">
+				    <span class="centerY">
+					<table>
+						<tr>
+							<td>
+								<p>HTTP-String:</p>
+							</td>
+							<td>
+								<p><b id="udbfhttp">N/A</b></p>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<p>Ortszeit:</p>
+							</td>
+							<td>
+								<p><b id="udbflocal">N/A</b></p>
+							</td>
+							</tr>
+						<tr>
+							<td>
+								<p>Unixzeit:</p>
+							</td>
+							<td>
+								<p><b id="udbfunix">N/A</b></p>
+							</td>
+						</tr>
+					</table>
+					</span>
+                </div>
+				<h1>Letzte Änderung der Badgedatenbank</h1>
+                <div class="group_box" id="lastChangedBadgeDB" style="height:34.5%; position:relative;">
+				    <span class="centerY">
+					<table>
+						<tr>
+							<td>
+								<p>HTTP-String:</p>
+							</td>
+							<td>
+								<p><b id="bdbhttp">N/A</b></p>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<p>Ortszeit:</p>
+							</td>
+							<td>
+								<p><b id="bdblocal">N/A</b></p>
+							</td>
+							</tr>
+						<tr>
+							<td>
+								<p>Unixzeit:</p>
+							</td>
+							<td>
+								<p><b id="bdbunix">N/A</b></p>
+							</td>
+						</tr>
+					</table>
+					</span>
+                </div>
+			</td>
+			<td style="width:33%">
+			    <h1>Ausgewähltes Badge (<a id="badgedate">N/A</a>)</h1>
+                <div class="group_box" id="selected_badge" style="height:85%; position:relative;">
+				    <span class="centerY">
+                    <table>
+                        <tbody>
+						<tr>
+                            <td>
+                                <img id="badge_svg" src="blank.png" width="128px;" style="padding:10px;">
+                            </td>
+							<td>
+                                <h1 id="badge_name">N/A</h1>
+								<h1 id="badge_desc" style="font-weight: normal;">N/A</h1>
+								<label class="switch">
+								    <input type="checkbox" id="displayDetails">
+									<span class="slider round"></span>
+								</label>
+								<p id="badge_uuid">N/A</p>
+                            </td>
+                        </tr>
+                        </tbody>
+				    </table>
+					</span>
+                </div>
+			</td>
+		</tr>
+		<tr>
+		    <td>
+			    <center><a class="green_btn" id="feedback_btn">Feedback geben</a></center>
+			</td>
+			<td>
+			    <center><a class="green_btn" id="request_btn">Server abrufen</a></center>
+			</td>
+			<td style="width:49%;">
+			    <h1>Badge Links</h1>
+                <div class="group_box" id="badge_links" style="width:100%; height:50%; position:relative;">
+					<span class="centerY" style="width:100%;">
+						<table>
+							<tbody>
+								<tr>
+									<td>
+										<p style="font-size: 11px;">SVG:</p>
+									</td>
+									<td>
+										<p style="font-size: 11px;"><a style="color: #00c0ff; text-decoration: underline;" id="svglink">N/A</a></p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p style="font-size: 11px;">PNG:</p>
+									</td>
+									<td>
+										<p style="font-size: 11px;"><a style="color: #00c0ff; text-decoration: underline;" id="pnglink">N/A</a></p>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</span>
+                </div>
+			</td>
+		</tr>
+    </table>
+	</div>
+			<script>
+		    const menu = document.querySelector(".menu");
+let menuVisible = false;
+
+const toggleMenu = command => {
+  menu.style.display = command === "show" ? "block" : "none";
+  menuVisible = command === "show" ? true : false;
+};
+
+const setPosition = ({ top, left }) => {
+  menu.style.left = `${left}px`;
+  menu.style.top = `${top}px`;
+  toggleMenu("show");
+};
+
+window.addEventListener("click", e => {
+  if(menuVisible)toggleMenu("hide");
+});
+
+window.addEventListener("contextmenu", e => {
+  e.preventDefault();
+  const origin = {
+    left: e.pageX,
+    top: e.pageY
+  };
+  setPosition(origin);
+  return false;
+});
+var menu_options = document.getElementsByClassName("menu-option");
+for (var i = 0; i < menu_options.length; i++){
+    menu_options[i].disabled = true;
+	menu_options[i].addEventListener('mousedown', 
+	function(event) {
+		event.preventDefault();
+	}
+    );
+}  
+</script>
+</body>
+
+</html>
