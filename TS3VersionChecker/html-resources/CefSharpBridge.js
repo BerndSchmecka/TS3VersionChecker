@@ -189,6 +189,18 @@
                     });
                 });
             })();
+
+			(async function ()
+            {
+                await CefSharp.BindObjectAsync("matrixResolveObj");
+				
+                document.getElementById('matrix_btn').addEventListener('click', async function ()
+                {
+			        matrixResolveObj.resolvematrix(document.getElementById('tb_usertag').value).then(ret_val => {
+					    document.getElementById('tb_matrixid').value = ret_val;
+                    });
+                });
+            })();
 			
 			(async function ()
             {
