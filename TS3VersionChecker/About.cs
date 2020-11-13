@@ -54,6 +54,11 @@ namespace TS3VersionChecker
             System.Diagnostics.Process.Start("https://github.com/protobuf-net/protobuf-net");
         }
 
+        private void JsonLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.newtonsoft.com/json");
+        }
+
         void addScrollBar()
         {
             ScrollBar vScrollBar1 = new VScrollBar();

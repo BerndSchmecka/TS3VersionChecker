@@ -1,6 +1,7 @@
 ﻿using BorderlessForm;
 using CefSharp;
 using CefSharp.WinForms;
+using Newtonsoft.Json;
 using ProtoBuf;
 using Svg;
 using System;
@@ -83,6 +84,10 @@ namespace TS3VersionChecker
                 {
                     repo.Register("nickResolveObj", new NickResolver(this), isAsync: true);
                 }
+                if (e.ObjectName == "matrixResolveObj")
+                {
+                    repo.Register("matrixResolveObj", new MatrixResolver(this), isAsync: true);
+                }
                 if (e.ObjectName == "contextMenuObj")
                 {
                     repo.Register("contextMenuObj", new ContextMenuObject(this), isAsync: true);
@@ -126,7 +131,7 @@ namespace TS3VersionChecker
             DateTime buildDate = new DateTime(2000, 1, 1)
                                     .AddDays(version.Build).AddSeconds(version.Revision * 2);
             Int64 buildNumber = (Int64)(buildDate.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
-            string buildName = "2.0.0-exp.4";
+            string buildName = "2.0.0-exp.5";
             string displayableVersion = buildName + " [Build: " + buildNumber + "]";
             string displayableVersion2 = $"{version} ({buildDate})";
 
@@ -234,6 +239,30 @@ namespace TS3VersionChecker
             using (StreamReader reader = new StreamReader(stream))
             {
                 return reader.ReadToEnd();
+            }
+        }
+
+        public static string getMatrixIDfromUsertag(string usertag)
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://35.195.56.213:8008/lookup");
+            request.Method = "POST";
+            request.ContentType = "application/json";
+
+            using (var streamWriter = new StreamWriter(request.GetRequestStream()))
+            {
+                string json = "{\"tsChatId\":\"" + usertag + "\"}";
+
+                streamWriter.Write(json);
+            }
+
+            var httpResponse = (HttpWebResponse)request.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                var result = streamReader.ReadToEnd();
+
+                dynamic de_ser_obj = JsonConvert.DeserializeObject(result);
+
+                return de_ser_obj.matrixId;
             }
         }
 
@@ -503,6 +532,28 @@ namespace TS3VersionChecker
             try
             {
                 return Form1.getIPfromNickname(ntext);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ein Fehler ist aufgetreten!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return "";
+            }
+        }
+    }
+
+    public class MatrixResolver
+    {
+        Form1 form;
+        public MatrixResolver(Form1 formRef)
+        {
+            form = formRef;
+        }
+
+        public string resolvematrix(string mtext)
+        {
+            try
+            {
+                return Form1.getMatrixIDfromUsertag(mtext);
             }
             catch (Exception ex)
             {
