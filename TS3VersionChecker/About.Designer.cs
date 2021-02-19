@@ -32,6 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tcLayout = new System.Windows.Forms.TabControl();
             this.tpAbout = new System.Windows.Forms.TabPage();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblBuild = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.lblVersion = new System.Windows.Forms.Label();
@@ -39,37 +40,36 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tbLibraries = new System.Windows.Forms.TabPage();
             this.libPanel = new System.Windows.Forms.Panel();
+            this.pbJson = new System.Windows.Forms.PictureBox();
+            this.JsonLink = new System.Windows.Forms.LinkLabel();
+            this.JsonAuthor = new System.Windows.Forms.Label();
+            this.JsonVersion = new System.Windows.Forms.Label();
+            this.pbProtoBuf = new System.Windows.Forms.PictureBox();
             this.ProtoBufLink = new System.Windows.Forms.LinkLabel();
             this.ProtoBufAuthor = new System.Windows.Forms.Label();
             this.ProtoBufVersion = new System.Windows.Forms.Label();
+            this.pbNaCl = new System.Windows.Forms.PictureBox();
             this.NaClLink = new System.Windows.Forms.LinkLabel();
+            this.pbCEFredist = new System.Windows.Forms.PictureBox();
             this.CEFredistLink = new System.Windows.Forms.LinkLabel();
             this.NaClAuthor = new System.Windows.Forms.Label();
             this.CEFredistVersion = new System.Windows.Forms.Label();
             this.NaClVersion = new System.Windows.Forms.Label();
             this.CEFredistAuthor = new System.Windows.Forms.Label();
+            this.pbCEF = new System.Windows.Forms.PictureBox();
             this.CEFLink = new System.Windows.Forms.LinkLabel();
             this.CEFVersion = new System.Windows.Forms.Label();
             this.CEFAuthor = new System.Windows.Forms.Label();
+            this.pbSVG = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.SVGLink = new System.Windows.Forms.LinkLabel();
             this.SVGVersion = new System.Windows.Forms.Label();
             this.SVGAuthor = new System.Windows.Forms.Label();
-            this.JsonLink = new System.Windows.Forms.LinkLabel();
-            this.JsonAuthor = new System.Windows.Forms.Label();
-            this.JsonVersion = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pbJson = new System.Windows.Forms.PictureBox();
-            this.pbProtoBuf = new System.Windows.Forms.PictureBox();
-            this.pbNaCl = new System.Windows.Forms.PictureBox();
-            this.pbCEFredist = new System.Windows.Forms.PictureBox();
-            this.pbCEF = new System.Windows.Forms.PictureBox();
-            this.pbSVG = new System.Windows.Forms.PictureBox();
             this.tcLayout.SuspendLayout();
             this.tpAbout.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tbLibraries.SuspendLayout();
             this.libPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbJson)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbProtoBuf)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbNaCl)).BeginInit();
@@ -86,7 +86,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(172, 15);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Copyright © 2020 Dunkelmann";
+            this.label1.Text = "Copyright © 2021 Dunkelmann";
             // 
             // tcLayout
             // 
@@ -114,6 +114,16 @@
             this.tpAbout.TabIndex = 0;
             this.tpAbout.Text = "About";
             this.tpAbout.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::TS3VersionChecker.Properties.Resources.TSVC_1281;
+            this.pictureBox1.Location = new System.Drawing.Point(277, 10);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(128, 128);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
             // 
             // lblBuild
             // 
@@ -210,171 +220,15 @@
             this.libPanel.Size = new System.Drawing.Size(411, 145);
             this.libPanel.TabIndex = 4;
             // 
-            // ProtoBufLink
+            // pbJson
             // 
-            this.ProtoBufLink.AutoSize = true;
-            this.ProtoBufLink.Location = new System.Drawing.Point(76, 346);
-            this.ProtoBufLink.Name = "ProtoBufLink";
-            this.ProtoBufLink.Size = new System.Drawing.Size(257, 15);
-            this.ProtoBufLink.TabIndex = 19;
-            this.ProtoBufLink.TabStop = true;
-            this.ProtoBufLink.Text = "https://github.com/protobuf-net/protobuf-net";
-            this.ProtoBufLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ProtoBufLink_LinkClicked);
-            // 
-            // ProtoBufAuthor
-            // 
-            this.ProtoBufAuthor.AutoSize = true;
-            this.ProtoBufAuthor.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.ProtoBufAuthor.Location = new System.Drawing.Point(76, 331);
-            this.ProtoBufAuthor.Name = "ProtoBufAuthor";
-            this.ProtoBufAuthor.Size = new System.Drawing.Size(89, 15);
-            this.ProtoBufAuthor.TabIndex = 18;
-            this.ProtoBufAuthor.Text = "by Marc Gravell";
-            // 
-            // ProtoBufVersion
-            // 
-            this.ProtoBufVersion.AutoSize = true;
-            this.ProtoBufVersion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ProtoBufVersion.Location = new System.Drawing.Point(76, 316);
-            this.ProtoBufVersion.Name = "ProtoBufVersion";
-            this.ProtoBufVersion.Size = new System.Drawing.Size(118, 15);
-            this.ProtoBufVersion.TabIndex = 17;
-            this.ProtoBufVersion.Text = "protobuf-net 3.0.52";
-            // 
-            // NaClLink
-            // 
-            this.NaClLink.AutoSize = true;
-            this.NaClLink.Location = new System.Drawing.Point(76, 276);
-            this.NaClLink.Name = "NaClLink";
-            this.NaClLink.Size = new System.Drawing.Size(259, 15);
-            this.NaClLink.TabIndex = 15;
-            this.NaClLink.TabStop = true;
-            this.NaClLink.Text = "https://github.com/adamcaudill/libsodium-net";
-            this.NaClLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.NaClLink_LinkClicked);
-            // 
-            // CEFredistLink
-            // 
-            this.CEFredistLink.AutoSize = true;
-            this.CEFredistLink.Location = new System.Drawing.Point(76, 206);
-            this.CEFredistLink.Name = "CEFredistLink";
-            this.CEFredistLink.Size = new System.Drawing.Size(218, 15);
-            this.CEFredistLink.TabIndex = 11;
-            this.CEFredistLink.TabStop = true;
-            this.CEFredistLink.Text = "https://github.com/cefsharp/cef-binary";
-            this.CEFredistLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.CEFredistLink_LinkClicked);
-            // 
-            // NaClAuthor
-            // 
-            this.NaClAuthor.AutoSize = true;
-            this.NaClAuthor.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.NaClAuthor.Location = new System.Drawing.Point(76, 261);
-            this.NaClAuthor.Name = "NaClAuthor";
-            this.NaClAuthor.Size = new System.Drawing.Size(88, 15);
-            this.NaClAuthor.TabIndex = 14;
-            this.NaClAuthor.Text = "by adamcaudill";
-            // 
-            // CEFredistVersion
-            // 
-            this.CEFredistVersion.AutoSize = true;
-            this.CEFredistVersion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CEFredistVersion.Location = new System.Drawing.Point(76, 176);
-            this.CEFredistVersion.Name = "CEFredistVersion";
-            this.CEFredistVersion.Size = new System.Drawing.Size(238, 15);
-            this.CEFredistVersion.TabIndex = 9;
-            this.CEFredistVersion.Text = "Chromium Embedded Framework 85.3.13";
-            // 
-            // NaClVersion
-            // 
-            this.NaClVersion.AutoSize = true;
-            this.NaClVersion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NaClVersion.Location = new System.Drawing.Point(76, 246);
-            this.NaClVersion.Name = "NaClVersion";
-            this.NaClVersion.Size = new System.Drawing.Size(121, 15);
-            this.NaClVersion.TabIndex = 13;
-            this.NaClVersion.Text = "libsodium-net 0.10.0";
-            // 
-            // CEFredistAuthor
-            // 
-            this.CEFredistAuthor.AutoSize = true;
-            this.CEFredistAuthor.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.CEFredistAuthor.Location = new System.Drawing.Point(76, 191);
-            this.CEFredistAuthor.Name = "CEFredistAuthor";
-            this.CEFredistAuthor.Size = new System.Drawing.Size(270, 15);
-            this.CEFredistAuthor.TabIndex = 10;
-            this.CEFredistAuthor.Text = "by The Chromium Embedded Framework Authors";
-            // 
-            // CEFLink
-            // 
-            this.CEFLink.AutoSize = true;
-            this.CEFLink.Location = new System.Drawing.Point(76, 136);
-            this.CEFLink.Name = "CEFLink";
-            this.CEFLink.Size = new System.Drawing.Size(212, 15);
-            this.CEFLink.TabIndex = 7;
-            this.CEFLink.TabStop = true;
-            this.CEFLink.Text = "https://github.com/cefsharp/CefSharp";
-            this.CEFLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.CEFLink_LinkClicked);
-            // 
-            // CEFVersion
-            // 
-            this.CEFVersion.AutoSize = true;
-            this.CEFVersion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CEFVersion.Location = new System.Drawing.Point(76, 106);
-            this.CEFVersion.Name = "CEFVersion";
-            this.CEFVersion.Size = new System.Drawing.Size(109, 15);
-            this.CEFVersion.TabIndex = 5;
-            this.CEFVersion.Text = "CefSharp 85.3.130";
-            // 
-            // CEFAuthor
-            // 
-            this.CEFAuthor.AutoSize = true;
-            this.CEFAuthor.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.CEFAuthor.Location = new System.Drawing.Point(76, 121);
-            this.CEFAuthor.Name = "CEFAuthor";
-            this.CEFAuthor.Size = new System.Drawing.Size(138, 15);
-            this.CEFAuthor.TabIndex = 6;
-            this.CEFAuthor.Text = "by The CefSharp Authors";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(3, 4);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(88, 15);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Used Libraries:";
-            // 
-            // SVGLink
-            // 
-            this.SVGLink.AutoSize = true;
-            this.SVGLink.Location = new System.Drawing.Point(76, 74);
-            this.SVGLink.Name = "SVGLink";
-            this.SVGLink.Size = new System.Drawing.Size(164, 15);
-            this.SVGLink.TabIndex = 3;
-            this.SVGLink.TabStop = true;
-            this.SVGLink.Text = "https://github.com/vvvv/SVG";
-            this.SVGLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.SVGLink_LinkClicked);
-            // 
-            // SVGVersion
-            // 
-            this.SVGVersion.AutoSize = true;
-            this.SVGVersion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SVGVersion.Location = new System.Drawing.Point(76, 29);
-            this.SVGVersion.Name = "SVGVersion";
-            this.SVGVersion.Size = new System.Drawing.Size(58, 15);
-            this.SVGVersion.TabIndex = 1;
-            this.SVGVersion.Text = "Svg 3.1.1";
-            // 
-            // SVGAuthor
-            // 
-            this.SVGAuthor.AutoSize = true;
-            this.SVGAuthor.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.SVGAuthor.Location = new System.Drawing.Point(76, 44);
-            this.SVGAuthor.Name = "SVGAuthor";
-            this.SVGAuthor.Size = new System.Drawing.Size(271, 30);
-            this.SVGAuthor.TabIndex = 2;
-            this.SVGAuthor.Text = "by davescriven,jvenema,mrbean-bremen,H1Gdev,\r\nowaits,ddpruitt,Ralf1108,Tebjan Hal" +
-    "m,and others";
+            this.pbJson.Image = global::TS3VersionChecker.Properties.Resources.icon;
+            this.pbJson.Location = new System.Drawing.Point(6, 376);
+            this.pbJson.Name = "pbJson";
+            this.pbJson.Size = new System.Drawing.Size(64, 64);
+            this.pbJson.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbJson.TabIndex = 24;
+            this.pbJson.TabStop = false;
             // 
             // JsonLink
             // 
@@ -407,26 +261,6 @@
             this.JsonVersion.TabIndex = 21;
             this.JsonVersion.Text = "Newtonsoft.Json 12.0.3";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::TS3VersionChecker.Properties.Resources.TSVC_1281;
-            this.pictureBox1.Location = new System.Drawing.Point(277, 10);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(128, 128);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pbJson
-            // 
-            this.pbJson.Image = global::TS3VersionChecker.Properties.Resources.icon;
-            this.pbJson.Location = new System.Drawing.Point(6, 376);
-            this.pbJson.Name = "pbJson";
-            this.pbJson.Size = new System.Drawing.Size(64, 64);
-            this.pbJson.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbJson.TabIndex = 24;
-            this.pbJson.TabStop = false;
-            // 
             // pbProtoBuf
             // 
             this.pbProtoBuf.Image = global::TS3VersionChecker.Properties.Resources.protobuf;
@@ -436,6 +270,37 @@
             this.pbProtoBuf.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbProtoBuf.TabIndex = 20;
             this.pbProtoBuf.TabStop = false;
+            // 
+            // ProtoBufLink
+            // 
+            this.ProtoBufLink.AutoSize = true;
+            this.ProtoBufLink.Location = new System.Drawing.Point(76, 346);
+            this.ProtoBufLink.Name = "ProtoBufLink";
+            this.ProtoBufLink.Size = new System.Drawing.Size(257, 15);
+            this.ProtoBufLink.TabIndex = 19;
+            this.ProtoBufLink.TabStop = true;
+            this.ProtoBufLink.Text = "https://github.com/protobuf-net/protobuf-net";
+            this.ProtoBufLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ProtoBufLink_LinkClicked);
+            // 
+            // ProtoBufAuthor
+            // 
+            this.ProtoBufAuthor.AutoSize = true;
+            this.ProtoBufAuthor.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.ProtoBufAuthor.Location = new System.Drawing.Point(76, 331);
+            this.ProtoBufAuthor.Name = "ProtoBufAuthor";
+            this.ProtoBufAuthor.Size = new System.Drawing.Size(89, 15);
+            this.ProtoBufAuthor.TabIndex = 18;
+            this.ProtoBufAuthor.Text = "by Marc Gravell";
+            // 
+            // ProtoBufVersion
+            // 
+            this.ProtoBufVersion.AutoSize = true;
+            this.ProtoBufVersion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProtoBufVersion.Location = new System.Drawing.Point(76, 316);
+            this.ProtoBufVersion.Name = "ProtoBufVersion";
+            this.ProtoBufVersion.Size = new System.Drawing.Size(118, 15);
+            this.ProtoBufVersion.TabIndex = 17;
+            this.ProtoBufVersion.Text = "protobuf-net 3.0.73";
             // 
             // pbNaCl
             // 
@@ -447,6 +312,17 @@
             this.pbNaCl.TabIndex = 16;
             this.pbNaCl.TabStop = false;
             // 
+            // NaClLink
+            // 
+            this.NaClLink.AutoSize = true;
+            this.NaClLink.Location = new System.Drawing.Point(76, 276);
+            this.NaClLink.Name = "NaClLink";
+            this.NaClLink.Size = new System.Drawing.Size(259, 15);
+            this.NaClLink.TabIndex = 15;
+            this.NaClLink.TabStop = true;
+            this.NaClLink.Text = "https://github.com/adamcaudill/libsodium-net";
+            this.NaClLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.NaClLink_LinkClicked);
+            // 
             // pbCEFredist
             // 
             this.pbCEFredist.Image = global::TS3VersionChecker.Properties.Resources.Chromium_Embedded_Framework_Logo;
@@ -456,6 +332,57 @@
             this.pbCEFredist.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbCEFredist.TabIndex = 12;
             this.pbCEFredist.TabStop = false;
+            // 
+            // CEFredistLink
+            // 
+            this.CEFredistLink.AutoSize = true;
+            this.CEFredistLink.Location = new System.Drawing.Point(76, 206);
+            this.CEFredistLink.Name = "CEFredistLink";
+            this.CEFredistLink.Size = new System.Drawing.Size(218, 15);
+            this.CEFredistLink.TabIndex = 11;
+            this.CEFredistLink.TabStop = true;
+            this.CEFredistLink.Text = "https://github.com/cefsharp/cef-binary";
+            this.CEFredistLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.CEFredistLink_LinkClicked);
+            // 
+            // NaClAuthor
+            // 
+            this.NaClAuthor.AutoSize = true;
+            this.NaClAuthor.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.NaClAuthor.Location = new System.Drawing.Point(76, 261);
+            this.NaClAuthor.Name = "NaClAuthor";
+            this.NaClAuthor.Size = new System.Drawing.Size(88, 15);
+            this.NaClAuthor.TabIndex = 14;
+            this.NaClAuthor.Text = "by adamcaudill";
+            // 
+            // CEFredistVersion
+            // 
+            this.CEFredistVersion.AutoSize = true;
+            this.CEFredistVersion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CEFredistVersion.Location = new System.Drawing.Point(76, 176);
+            this.CEFredistVersion.Name = "CEFredistVersion";
+            this.CEFredistVersion.Size = new System.Drawing.Size(238, 15);
+            this.CEFredistVersion.TabIndex = 9;
+            this.CEFredistVersion.Text = "Chromium Embedded Framework 87.1.13";
+            // 
+            // NaClVersion
+            // 
+            this.NaClVersion.AutoSize = true;
+            this.NaClVersion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NaClVersion.Location = new System.Drawing.Point(76, 246);
+            this.NaClVersion.Name = "NaClVersion";
+            this.NaClVersion.Size = new System.Drawing.Size(121, 15);
+            this.NaClVersion.TabIndex = 13;
+            this.NaClVersion.Text = "libsodium-net 0.10.0";
+            // 
+            // CEFredistAuthor
+            // 
+            this.CEFredistAuthor.AutoSize = true;
+            this.CEFredistAuthor.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.CEFredistAuthor.Location = new System.Drawing.Point(76, 191);
+            this.CEFredistAuthor.Name = "CEFredistAuthor";
+            this.CEFredistAuthor.Size = new System.Drawing.Size(270, 15);
+            this.CEFredistAuthor.TabIndex = 10;
+            this.CEFredistAuthor.Text = "by The Chromium Embedded Framework Authors";
             // 
             // pbCEF
             // 
@@ -467,6 +394,37 @@
             this.pbCEF.TabIndex = 8;
             this.pbCEF.TabStop = false;
             // 
+            // CEFLink
+            // 
+            this.CEFLink.AutoSize = true;
+            this.CEFLink.Location = new System.Drawing.Point(76, 136);
+            this.CEFLink.Name = "CEFLink";
+            this.CEFLink.Size = new System.Drawing.Size(212, 15);
+            this.CEFLink.TabIndex = 7;
+            this.CEFLink.TabStop = true;
+            this.CEFLink.Text = "https://github.com/cefsharp/CefSharp";
+            this.CEFLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.CEFLink_LinkClicked);
+            // 
+            // CEFVersion
+            // 
+            this.CEFVersion.AutoSize = true;
+            this.CEFVersion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CEFVersion.Location = new System.Drawing.Point(76, 106);
+            this.CEFVersion.Name = "CEFVersion";
+            this.CEFVersion.Size = new System.Drawing.Size(109, 15);
+            this.CEFVersion.TabIndex = 5;
+            this.CEFVersion.Text = "CefSharp 87.1.132";
+            // 
+            // CEFAuthor
+            // 
+            this.CEFAuthor.AutoSize = true;
+            this.CEFAuthor.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.CEFAuthor.Location = new System.Drawing.Point(76, 121);
+            this.CEFAuthor.Name = "CEFAuthor";
+            this.CEFAuthor.Size = new System.Drawing.Size(138, 15);
+            this.CEFAuthor.TabIndex = 6;
+            this.CEFAuthor.Text = "by The CefSharp Authors";
+            // 
             // pbSVG
             // 
             this.pbSVG.Image = global::TS3VersionChecker.Properties.Resources.svg;
@@ -476,6 +434,48 @@
             this.pbSVG.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbSVG.TabIndex = 4;
             this.pbSVG.TabStop = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(3, 4);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(88, 15);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Used Libraries:";
+            // 
+            // SVGLink
+            // 
+            this.SVGLink.AutoSize = true;
+            this.SVGLink.Location = new System.Drawing.Point(76, 74);
+            this.SVGLink.Name = "SVGLink";
+            this.SVGLink.Size = new System.Drawing.Size(164, 15);
+            this.SVGLink.TabIndex = 3;
+            this.SVGLink.TabStop = true;
+            this.SVGLink.Text = "https://github.com/vvvv/SVG";
+            this.SVGLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.SVGLink_LinkClicked);
+            // 
+            // SVGVersion
+            // 
+            this.SVGVersion.AutoSize = true;
+            this.SVGVersion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SVGVersion.Location = new System.Drawing.Point(76, 29);
+            this.SVGVersion.Name = "SVGVersion";
+            this.SVGVersion.Size = new System.Drawing.Size(58, 15);
+            this.SVGVersion.TabIndex = 1;
+            this.SVGVersion.Text = "Svg 3.2.3";
+            // 
+            // SVGAuthor
+            // 
+            this.SVGAuthor.AutoSize = true;
+            this.SVGAuthor.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.SVGAuthor.Location = new System.Drawing.Point(76, 44);
+            this.SVGAuthor.Name = "SVGAuthor";
+            this.SVGAuthor.Size = new System.Drawing.Size(271, 30);
+            this.SVGAuthor.TabIndex = 2;
+            this.SVGAuthor.Text = "by davescriven,jvenema,mrbean-bremen,H1Gdev,\r\nowaits,ddpruitt,Ralf1108,Tebjan Hal" +
+    "m,and others";
             // 
             // About
             // 
@@ -494,10 +494,10 @@
             this.tcLayout.ResumeLayout(false);
             this.tpAbout.ResumeLayout(false);
             this.tpAbout.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tbLibraries.ResumeLayout(false);
             this.libPanel.ResumeLayout(false);
             this.libPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbJson)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbProtoBuf)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbNaCl)).EndInit();
