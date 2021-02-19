@@ -247,6 +247,9 @@
     <None Include="Resources\salt.png" />
     <None Include="Resources\protobuf.png" />
     <None Include="Resources\icon.png" />
+    <Content Include="html-resources\version.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="tsvc_128_3cp_icon.ico" />
     <None Include="Resources\darktitlebar.png" />
     <None Include="Resources\close_normal.png" />

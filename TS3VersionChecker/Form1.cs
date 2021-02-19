@@ -53,7 +53,7 @@ namespace TS3VersionChecker
 
         public CustomContextHandler cmhandler = new CustomContextHandler();
 
-        public ChromiumWebBrowser chromeBrowser;
+        internal ChromiumWebBrowser chromeBrowser;
 
         public Form1()
         {
@@ -104,22 +104,6 @@ namespace TS3VersionChecker
             chromeBrowser.MenuHandler = cmhandler;
             this.Controls.Add(chromeBrowser);
             chromeBrowser.Dock = DockStyle.Fill;
-        }
-
-        public static void AddFileSecurity(string fileName, SecurityIdentifier account, FileSystemRights rights, AccessControlType controlType)
-        {
-            FileSecurity fSecurity = File.GetAccessControl(fileName);
-            fSecurity.AddAccessRule(new FileSystemAccessRule(account, rights, controlType));
-            File.SetAccessControl(fileName, fSecurity);
-
-        }
-
-        public static void RemoveFileSecurity(string fileName, SecurityIdentifier account, FileSystemRights rights, AccessControlType controlType)
-        {
-            FileSecurity fSecurity = File.GetAccessControl(fileName);
-            fSecurity.RemoveAccessRule(new FileSystemAccessRule(account, rights, controlType));
-            File.SetAccessControl(fileName, fSecurity);
-
         }
 
         public string dispVer1 = "N/A";
@@ -264,11 +248,6 @@ namespace TS3VersionChecker
 
                 return de_ser_obj.matrixId;
             }
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
         }
     }
 
@@ -565,29 +544,35 @@ namespace TS3VersionChecker
 
     public class ContextMenuObject
     {
-        Form1 form;
+
+        private ChromiumWebBrowser cwb;
         public ContextMenuObject(Form1 formRef)
         {
-            form = formRef;
+            this.cwb = formRef.chromeBrowser;
+        }
+
+        public ContextMenuObject(VersionList formRef)
+        {
+            this.cwb = formRef.chromeBrowser;
         }
 
         public void handlecontextmenu(string id)
         {
             if (id.Equals("cut"))
             {
-                form.chromeBrowser.Cut();
+                cwb.Cut();
             }
             if (id.Equals("copy"))
             {
-                form.chromeBrowser.Copy();
+                cwb.Copy();
             }
             if (id.Equals("paste"))
             {
-                form.chromeBrowser.Paste();
+                cwb.Paste();
             }
             if (id.Equals("select_all"))
             {
-                form.chromeBrowser.SelectAll();
+                cwb.SelectAll();
             }
         }
     }

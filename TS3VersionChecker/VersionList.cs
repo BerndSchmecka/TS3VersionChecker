@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CefSharp;
+using CefSharp.WinForms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +14,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TS3VersionChecker;
 
 namespace TS3VersionChecker
 {
@@ -33,20 +36,38 @@ namespace TS3VersionChecker
         public static extern IntPtr SetWindowTheme(IntPtr hwnd, string pszSubAppName, string pszSubIdList);
 
 
-        public static readonly byte[] publicKey = Convert.FromBase64String("UrN1jX0dBE1vulTNLCoYwrVpfITyo+NBuq/twbf9hLw=");
+        private static readonly byte[] publicKey = Convert.FromBase64String("UrN1jX0dBE1vulTNLCoYwrVpfITyo+NBuq/twbf9hLw=");
+
+        public CustomContextHandler cmhandler = new CustomContextHandler();
+        internal ChromiumWebBrowser chromeBrowser;
 
 
         public VersionList()
         {
-            //DisableProcessWindowsGhosting();
-            
+            StaticUtils.UseImmersiveDarkMode(this.Handle, true);
             InitializeComponent();
+            InitializeChromium();
+            chromeBrowser.JavascriptObjectRepository.ResolveObject += (sender, e) =>
+            {
+                var repo = e.ObjectRepository;
+                if (e.ObjectName == "verList")
+                {
+                    repo.Register("verList", new VerListTable(this), isAsync: true);
+                }
+                if (e.ObjectName == "conMenu")
+                {
+                    repo.Register("conMenu", new ContextMenuObject(this), isAsync: true);
+                }
+            };
         }
 
-        protected override void OnHandleCreated(EventArgs e)
+        public void InitializeChromium()
         {
-            //SetWindowTheme(this.Handle, "", "");
-            base.OnHandleCreated(e);
+            String page = string.Format(@"{0}\html-resources\version.html", Application.StartupPath);
+            chromeBrowser = new ChromiumWebBrowser(page);
+            chromeBrowser.MenuHandler = cmhandler;
+            this.Controls.Add(chromeBrowser);
+            chromeBrowser.Dock = DockStyle.Fill;
         }
 
         private void VersionList_Load(object sender, EventArgs e)
@@ -57,19 +78,9 @@ namespace TS3VersionChecker
             string displayableVersion = $"{version} ({buildDate})";
 
             this.Text = this.Text + " " + displayableVersion;
-
-            try
-            {
-                DataTable verListTable = DownloadCSVFromGitHub(Form1.verGitLink);
-                dgvVersions.DataSource = verListTable;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message + ex.StackTrace);
-            }
         }
 
-        private DataTable DownloadCSVFromGitHub(string link)
+        internal String DownloadCSVFromGitHub(string link)
         {
             HttpWebRequest request = HttpWebRequest.CreateHttp(link);
             request.UserAgent = "Mozilla/5.0";
@@ -82,7 +93,7 @@ namespace TS3VersionChecker
             fs.Close();
             DataTable dt = ConvertCSVtoDataTable(Path.GetTempPath() + "ver.csv");
             File.Delete(Path.GetTempPath() + "ver.csv");
-            return dt;
+            return ToCSV(dt);
         }
 
         private DataTable ConvertCSVtoDataTable(string strFilePath)
@@ -113,19 +124,53 @@ namespace TS3VersionChecker
             return dt;
         }
 
+        private String ToCSV(DataTable dtDataTable)
+        {
+            StringBuilder sb = new StringBuilder();
+            StringWriter sw = new StringWriter(sb);
+            //headers    
+            for (int i = 0; i < dtDataTable.Columns.Count; i++)
+            {
+                sw.Write(dtDataTable.Columns[i]);
+                if (i < dtDataTable.Columns.Count - 1)
+                {
+                    sw.Write(",");
+                }
+            }
+            sw.Write(sw.NewLine);
+            foreach (DataRow dr in dtDataTable.Rows)
+            {
+                for (int i = 0; i < dtDataTable.Columns.Count; i++)
+                {
+                    if (!Convert.IsDBNull(dr[i]))
+                    {
+                        string value = dr[i].ToString();
+                        if (value.Contains(','))
+                        {
+                            value = String.Format("\"{0}\"", value);
+                            sw.Write(value);
+                        }
+                        else
+                        {
+                            sw.Write(dr[i].ToString());
+                        }
+                    }
+                    if (i < dtDataTable.Columns.Count - 1)
+                    {
+                        sw.Write(",");
+                    }
+                }
+                sw.Write(sw.NewLine);
+            }
+            sw.Close();
+            return sb.ToString();
+        }
+
         private void DgvVersions_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F5)
             {
-                try
-                {
-                    DataTable verListTable = DownloadCSVFromGitHub(Form1.verGitLink);
-                    dgvVersions.DataSource = verListTable;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+                chromeBrowser.Refresh();
             }
         }
 
@@ -158,23 +203,36 @@ namespace TS3VersionChecker
             return output;
         }
 
-        private void dgvVersions_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        private void VersionList_FormClosing(object sender, FormClosingEventArgs e)
         {
-            foreach (DataGridViewRow row in dgvVersions.Rows)
-            {
-                if (Convert.ToString(row.Cells["Valid"].Value) == "\u2714")
-                {
-                    row.Cells["Valid"].Style.BackColor = Color.Green;
-                }
-                else if (Convert.ToString(row.Cells["Valid"].Value) == "\u2718")
-                {
-                    row.Cells["Valid"].Style.BackColor = Color.Red;
-                }
-                else
-                {
-                    row.Cells["Valid"].Style.BackColor = Color.Yellow;
-                }
-            }
+            chromeBrowser.Delete();
+            chromeBrowser.Dispose();
         }
+    }
+}
+
+
+public class VerListTable
+{
+
+    VersionList form;
+    public VerListTable(VersionList formRef)
+    {
+        form = formRef;
+    }
+
+    public string getdata()
+    {
+        string data;
+        try
+        {
+            data = form.DownloadCSVFromGitHub(Form1.verGitLink);
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.Message);
+            data = "version,platform,hash,Valid \n0.0.0 [Build: 0000000000],Unknown,00000000000000000000000000000000000000000000000000000000000000000000000000000000000000==,\u2718 ";
+        }
+        return data;
     }
 }

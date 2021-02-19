@@ -1,0 +1,88 @@
+﻿<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <script>
+        (async function ()
+        {
+        await CefSharp.BindObjectAsync("verList");
+        var data = await verList.getdata();
+
+        var lines = data.split("\n"),
+        output = [],
+        i;
+        for (i = 0; i < lines.length; i++)
+        output.push("<tr><td><p>"
+        + lines[i].slice(0,-1).split(",").join("</p></td><td><p>")
+        + "</p></td></tr>");
+        output = "<table>" + output.join("").replaceAll('\u2714', "<font color='#0f0'>\u2714</font>").replaceAll("\u2718", "<font color='#f00'>\u2718</font>"); + "</table>";
+        var div = document.getElementById('container');
+
+        div.innerHTML = output;
+        })();
+
+        (async function ()
+            {
+                await CefSharp.BindObjectAsync("conMenu");
+				
+				var menu_options = document.getElementsByClassName("menu-option");
+				for (var i = 0; i < menu_options.length; i++){
+					menu_options[i].addEventListener('click', function(e){
+						conMenu.handlecontextmenu(this.id);
+					});
+				}   
+            })();
+    </script>
+</head>
+<body>
+    <span class="menu">
+        <ul class="menu-options">
+            <li id="cut" class="menu-option">Cut</li>
+            <li id="copy" class="menu-option">Copy</li>
+            <li id="paste" class="menu-option">Paste</li>
+            <hr>
+            <li id="select_all" class="menu-option">Select All</li>
+        </ul>
+    </span>
+    <center>
+        <div id='container' class='centerX'></div>
+    </center>
+    <script>
+        const menu = document.querySelector(".menu");
+        let menuVisible = false;
+
+        const toggleMenu = command => {
+        menu.style.display = command === "show" ? "block" : "none";
+        menuVisible = command === "show" ? true : false;
+        };
+
+        const setPosition = ({ top, left }) => {
+        menu.style.left = `${left}px`;
+        menu.style.top = `${top}px`;
+        toggleMenu("show");
+        };
+
+        window.addEventListener("click", e => {
+        if(menuVisible)toggleMenu("hide");
+        });
+
+        window.addEventListener("contextmenu", e => {
+        e.preventDefault();
+        const origin = {
+        left: e.pageX,
+        top: e.pageY
+        };
+        setPosition(origin);
+        return false;
+        });
+        var menu_options = document.getElementsByClassName("menu-option");
+        for (var i = 0; i < menu_options.length; i++){
+        menu_options[i].disabled = true;
+        menu_options[i].addEventListener('mousedown',
+        function(event) {
+        event.preventDefault();
+        }
+        );
+        }
+    </script>
+</body>
+</html>
