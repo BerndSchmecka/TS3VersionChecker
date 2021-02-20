@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("TS3VersionChecker")]
-[assembly: AssemblyCopyright("Copyright © Lucas Neuber 2019")]
+[assembly: AssemblyCopyright("Copyright © Dunkelmann 2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
