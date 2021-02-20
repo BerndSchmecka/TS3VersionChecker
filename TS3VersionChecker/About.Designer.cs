@@ -40,6 +40,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tbLibraries = new System.Windows.Forms.TabPage();
             this.libPanel = new System.Windows.Forms.Panel();
+            this.pbNancy = new System.Windows.Forms.PictureBox();
+            this.NancyLink = new System.Windows.Forms.LinkLabel();
+            this.NancyAuthor = new System.Windows.Forms.Label();
+            this.NancyVersion = new System.Windows.Forms.Label();
             this.pbJson = new System.Windows.Forms.PictureBox();
             this.JsonLink = new System.Windows.Forms.LinkLabel();
             this.JsonAuthor = new System.Windows.Forms.Label();
@@ -70,6 +74,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tbLibraries.SuspendLayout();
             this.libPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbNancy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbJson)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbProtoBuf)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbNaCl)).BeginInit();
@@ -81,8 +86,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(13, 194);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(15, 224);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(172, 15);
             this.label1.TabIndex = 0;
@@ -92,11 +98,12 @@
             // 
             this.tcLayout.Controls.Add(this.tpAbout);
             this.tcLayout.Controls.Add(this.tbLibraries);
-            this.tcLayout.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tcLayout.Location = new System.Drawing.Point(12, 12);
+            this.tcLayout.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tcLayout.Location = new System.Drawing.Point(14, 14);
+            this.tcLayout.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.tcLayout.Name = "tcLayout";
             this.tcLayout.SelectedIndex = 0;
-            this.tcLayout.Size = new System.Drawing.Size(425, 179);
+            this.tcLayout.Size = new System.Drawing.Size(496, 207);
             this.tcLayout.TabIndex = 1;
             // 
             // tpAbout
@@ -108,17 +115,19 @@
             this.tpAbout.Controls.Add(this.label3);
             this.tpAbout.Controls.Add(this.label2);
             this.tpAbout.Location = new System.Drawing.Point(4, 24);
+            this.tpAbout.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.tpAbout.Name = "tpAbout";
-            this.tpAbout.Padding = new System.Windows.Forms.Padding(3);
-            this.tpAbout.Size = new System.Drawing.Size(417, 151);
+            this.tpAbout.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.tpAbout.Size = new System.Drawing.Size(488, 179);
             this.tpAbout.TabIndex = 0;
             this.tpAbout.Text = "About";
             this.tpAbout.UseVisualStyleBackColor = true;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::TS3VersionChecker.Properties.Resources.TSVC_1281;
-            this.pictureBox1.Location = new System.Drawing.Point(277, 10);
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(323, 12);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(128, 128);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -128,8 +137,9 @@
             // lblBuild
             // 
             this.lblBuild.AutoSize = true;
-            this.lblBuild.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBuild.Location = new System.Drawing.Point(63, 73);
+            this.lblBuild.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblBuild.Location = new System.Drawing.Point(74, 84);
+            this.lblBuild.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBuild.Name = "lblBuild";
             this.lblBuild.Size = new System.Drawing.Size(29, 15);
             this.lblBuild.TabIndex = 5;
@@ -138,8 +148,9 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(9, 73);
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(10, 84);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(37, 15);
             this.label5.TabIndex = 4;
@@ -148,8 +159,9 @@
             // lblVersion
             // 
             this.lblVersion.AutoSize = true;
-            this.lblVersion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVersion.Location = new System.Drawing.Point(63, 53);
+            this.lblVersion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblVersion.Location = new System.Drawing.Point(74, 61);
+            this.lblVersion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(29, 15);
             this.lblVersion.TabIndex = 3;
@@ -158,8 +170,9 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(9, 53);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(10, 61);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(48, 15);
             this.label3.TabIndex = 2;
@@ -168,10 +181,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(6, 10);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(7, 12);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(218, 32);
+            this.label2.Size = new System.Drawing.Size(217, 32);
             this.label2.TabIndex = 2;
             this.label2.Text = "TS3VersionChecker";
             // 
@@ -179,9 +193,10 @@
             // 
             this.tbLibraries.Controls.Add(this.libPanel);
             this.tbLibraries.Location = new System.Drawing.Point(4, 24);
+            this.tbLibraries.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.tbLibraries.Name = "tbLibraries";
-            this.tbLibraries.Padding = new System.Windows.Forms.Padding(3);
-            this.tbLibraries.Size = new System.Drawing.Size(417, 151);
+            this.tbLibraries.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.tbLibraries.Size = new System.Drawing.Size(488, 179);
             this.tbLibraries.TabIndex = 1;
             this.tbLibraries.Text = "Used Libraries";
             this.tbLibraries.UseVisualStyleBackColor = true;
@@ -189,6 +204,10 @@
             // libPanel
             // 
             this.libPanel.AutoScroll = true;
+            this.libPanel.Controls.Add(this.pbNancy);
+            this.libPanel.Controls.Add(this.NancyLink);
+            this.libPanel.Controls.Add(this.NancyAuthor);
+            this.libPanel.Controls.Add(this.NancyVersion);
             this.libPanel.Controls.Add(this.pbJson);
             this.libPanel.Controls.Add(this.JsonLink);
             this.libPanel.Controls.Add(this.JsonAuthor);
@@ -215,17 +234,64 @@
             this.libPanel.Controls.Add(this.SVGVersion);
             this.libPanel.Controls.Add(this.SVGAuthor);
             this.libPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.libPanel.Location = new System.Drawing.Point(3, 3);
+            this.libPanel.Location = new System.Drawing.Point(4, 3);
+            this.libPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.libPanel.Name = "libPanel";
-            this.libPanel.Size = new System.Drawing.Size(411, 145);
+            this.libPanel.Size = new System.Drawing.Size(480, 173);
             this.libPanel.TabIndex = 4;
+            // 
+            // pbNancy
+            // 
+            this.pbNancy.Image = ((System.Drawing.Image)(resources.GetObject("pbNancy.Image")));
+            this.pbNancy.Location = new System.Drawing.Point(7, 515);
+            this.pbNancy.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.pbNancy.Name = "pbNancy";
+            this.pbNancy.Size = new System.Drawing.Size(75, 74);
+            this.pbNancy.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbNancy.TabIndex = 28;
+            this.pbNancy.TabStop = false;
+            // 
+            // NancyLink
+            // 
+            this.NancyLink.AutoSize = true;
+            this.NancyLink.Location = new System.Drawing.Point(89, 561);
+            this.NancyLink.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.NancyLink.Name = "NancyLink";
+            this.NancyLink.Size = new System.Drawing.Size(110, 15);
+            this.NancyLink.TabIndex = 27;
+            this.NancyLink.TabStop = true;
+            this.NancyLink.Text = "https://nancyfx.org";
+            this.NancyLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.NancyLink_LinkClicked);
+            // 
+            // NancyAuthor
+            // 
+            this.NancyAuthor.AutoSize = true;
+            this.NancyAuthor.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.NancyAuthor.Location = new System.Drawing.Point(89, 544);
+            this.NancyAuthor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.NancyAuthor.Name = "NancyAuthor";
+            this.NancyAuthor.Size = new System.Drawing.Size(305, 15);
+            this.NancyAuthor.TabIndex = 26;
+            this.NancyAuthor.Text = "by Andreas Håkansson, Steven Robbins and contributors";
+            // 
+            // NancyVersion
+            // 
+            this.NancyVersion.AutoSize = true;
+            this.NancyVersion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.NancyVersion.Location = new System.Drawing.Point(89, 526);
+            this.NancyVersion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.NancyVersion.Name = "NancyVersion";
+            this.NancyVersion.Size = new System.Drawing.Size(71, 15);
+            this.NancyVersion.TabIndex = 25;
+            this.NancyVersion.Text = "Nancy 2.0.0";
             // 
             // pbJson
             // 
-            this.pbJson.Image = global::TS3VersionChecker.Properties.Resources.icon;
-            this.pbJson.Location = new System.Drawing.Point(6, 376);
+            this.pbJson.Image = ((System.Drawing.Image)(resources.GetObject("pbJson.Image")));
+            this.pbJson.Location = new System.Drawing.Point(7, 434);
+            this.pbJson.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pbJson.Name = "pbJson";
-            this.pbJson.Size = new System.Drawing.Size(64, 64);
+            this.pbJson.Size = new System.Drawing.Size(75, 74);
             this.pbJson.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbJson.TabIndex = 24;
             this.pbJson.TabStop = false;
@@ -233,7 +299,8 @@
             // JsonLink
             // 
             this.JsonLink.AutoSize = true;
-            this.JsonLink.Location = new System.Drawing.Point(76, 416);
+            this.JsonLink.Location = new System.Drawing.Point(89, 480);
+            this.JsonLink.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.JsonLink.Name = "JsonLink";
             this.JsonLink.Size = new System.Drawing.Size(191, 15);
             this.JsonLink.TabIndex = 23;
@@ -244,8 +311,9 @@
             // JsonAuthor
             // 
             this.JsonAuthor.AutoSize = true;
-            this.JsonAuthor.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.JsonAuthor.Location = new System.Drawing.Point(76, 401);
+            this.JsonAuthor.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.JsonAuthor.Location = new System.Drawing.Point(89, 463);
+            this.JsonAuthor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.JsonAuthor.Name = "JsonAuthor";
             this.JsonAuthor.Size = new System.Drawing.Size(129, 15);
             this.JsonAuthor.TabIndex = 22;
@@ -254,8 +322,9 @@
             // JsonVersion
             // 
             this.JsonVersion.AutoSize = true;
-            this.JsonVersion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.JsonVersion.Location = new System.Drawing.Point(76, 386);
+            this.JsonVersion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.JsonVersion.Location = new System.Drawing.Point(89, 445);
+            this.JsonVersion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.JsonVersion.Name = "JsonVersion";
             this.JsonVersion.Size = new System.Drawing.Size(138, 15);
             this.JsonVersion.TabIndex = 21;
@@ -263,10 +332,11 @@
             // 
             // pbProtoBuf
             // 
-            this.pbProtoBuf.Image = global::TS3VersionChecker.Properties.Resources.protobuf;
-            this.pbProtoBuf.Location = new System.Drawing.Point(6, 306);
+            this.pbProtoBuf.Image = ((System.Drawing.Image)(resources.GetObject("pbProtoBuf.Image")));
+            this.pbProtoBuf.Location = new System.Drawing.Point(7, 353);
+            this.pbProtoBuf.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pbProtoBuf.Name = "pbProtoBuf";
-            this.pbProtoBuf.Size = new System.Drawing.Size(64, 64);
+            this.pbProtoBuf.Size = new System.Drawing.Size(75, 74);
             this.pbProtoBuf.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbProtoBuf.TabIndex = 20;
             this.pbProtoBuf.TabStop = false;
@@ -274,7 +344,8 @@
             // ProtoBufLink
             // 
             this.ProtoBufLink.AutoSize = true;
-            this.ProtoBufLink.Location = new System.Drawing.Point(76, 346);
+            this.ProtoBufLink.Location = new System.Drawing.Point(89, 399);
+            this.ProtoBufLink.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ProtoBufLink.Name = "ProtoBufLink";
             this.ProtoBufLink.Size = new System.Drawing.Size(257, 15);
             this.ProtoBufLink.TabIndex = 19;
@@ -285,8 +356,9 @@
             // ProtoBufAuthor
             // 
             this.ProtoBufAuthor.AutoSize = true;
-            this.ProtoBufAuthor.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.ProtoBufAuthor.Location = new System.Drawing.Point(76, 331);
+            this.ProtoBufAuthor.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ProtoBufAuthor.Location = new System.Drawing.Point(89, 382);
+            this.ProtoBufAuthor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ProtoBufAuthor.Name = "ProtoBufAuthor";
             this.ProtoBufAuthor.Size = new System.Drawing.Size(89, 15);
             this.ProtoBufAuthor.TabIndex = 18;
@@ -295,8 +367,9 @@
             // ProtoBufVersion
             // 
             this.ProtoBufVersion.AutoSize = true;
-            this.ProtoBufVersion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ProtoBufVersion.Location = new System.Drawing.Point(76, 316);
+            this.ProtoBufVersion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.ProtoBufVersion.Location = new System.Drawing.Point(89, 365);
+            this.ProtoBufVersion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ProtoBufVersion.Name = "ProtoBufVersion";
             this.ProtoBufVersion.Size = new System.Drawing.Size(118, 15);
             this.ProtoBufVersion.TabIndex = 17;
@@ -304,10 +377,11 @@
             // 
             // pbNaCl
             // 
-            this.pbNaCl.Image = global::TS3VersionChecker.Properties.Resources.salt;
-            this.pbNaCl.Location = new System.Drawing.Point(6, 236);
+            this.pbNaCl.Image = ((System.Drawing.Image)(resources.GetObject("pbNaCl.Image")));
+            this.pbNaCl.Location = new System.Drawing.Point(7, 272);
+            this.pbNaCl.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pbNaCl.Name = "pbNaCl";
-            this.pbNaCl.Size = new System.Drawing.Size(64, 64);
+            this.pbNaCl.Size = new System.Drawing.Size(75, 74);
             this.pbNaCl.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbNaCl.TabIndex = 16;
             this.pbNaCl.TabStop = false;
@@ -315,7 +389,8 @@
             // NaClLink
             // 
             this.NaClLink.AutoSize = true;
-            this.NaClLink.Location = new System.Drawing.Point(76, 276);
+            this.NaClLink.Location = new System.Drawing.Point(89, 318);
+            this.NaClLink.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.NaClLink.Name = "NaClLink";
             this.NaClLink.Size = new System.Drawing.Size(259, 15);
             this.NaClLink.TabIndex = 15;
@@ -325,10 +400,11 @@
             // 
             // pbCEFredist
             // 
-            this.pbCEFredist.Image = global::TS3VersionChecker.Properties.Resources.Chromium_Embedded_Framework_Logo;
-            this.pbCEFredist.Location = new System.Drawing.Point(6, 166);
+            this.pbCEFredist.Image = ((System.Drawing.Image)(resources.GetObject("pbCEFredist.Image")));
+            this.pbCEFredist.Location = new System.Drawing.Point(7, 192);
+            this.pbCEFredist.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pbCEFredist.Name = "pbCEFredist";
-            this.pbCEFredist.Size = new System.Drawing.Size(64, 64);
+            this.pbCEFredist.Size = new System.Drawing.Size(75, 74);
             this.pbCEFredist.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbCEFredist.TabIndex = 12;
             this.pbCEFredist.TabStop = false;
@@ -336,7 +412,8 @@
             // CEFredistLink
             // 
             this.CEFredistLink.AutoSize = true;
-            this.CEFredistLink.Location = new System.Drawing.Point(76, 206);
+            this.CEFredistLink.Location = new System.Drawing.Point(89, 238);
+            this.CEFredistLink.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.CEFredistLink.Name = "CEFredistLink";
             this.CEFredistLink.Size = new System.Drawing.Size(218, 15);
             this.CEFredistLink.TabIndex = 11;
@@ -347,8 +424,9 @@
             // NaClAuthor
             // 
             this.NaClAuthor.AutoSize = true;
-            this.NaClAuthor.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.NaClAuthor.Location = new System.Drawing.Point(76, 261);
+            this.NaClAuthor.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.NaClAuthor.Location = new System.Drawing.Point(89, 301);
+            this.NaClAuthor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.NaClAuthor.Name = "NaClAuthor";
             this.NaClAuthor.Size = new System.Drawing.Size(88, 15);
             this.NaClAuthor.TabIndex = 14;
@@ -357,8 +435,9 @@
             // CEFredistVersion
             // 
             this.CEFredistVersion.AutoSize = true;
-            this.CEFredistVersion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CEFredistVersion.Location = new System.Drawing.Point(76, 176);
+            this.CEFredistVersion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.CEFredistVersion.Location = new System.Drawing.Point(89, 203);
+            this.CEFredistVersion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.CEFredistVersion.Name = "CEFredistVersion";
             this.CEFredistVersion.Size = new System.Drawing.Size(231, 15);
             this.CEFredistVersion.TabIndex = 9;
@@ -367,8 +446,9 @@
             // NaClVersion
             // 
             this.NaClVersion.AutoSize = true;
-            this.NaClVersion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NaClVersion.Location = new System.Drawing.Point(76, 246);
+            this.NaClVersion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.NaClVersion.Location = new System.Drawing.Point(89, 284);
+            this.NaClVersion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.NaClVersion.Name = "NaClVersion";
             this.NaClVersion.Size = new System.Drawing.Size(121, 15);
             this.NaClVersion.TabIndex = 13;
@@ -377,8 +457,9 @@
             // CEFredistAuthor
             // 
             this.CEFredistAuthor.AutoSize = true;
-            this.CEFredistAuthor.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.CEFredistAuthor.Location = new System.Drawing.Point(76, 191);
+            this.CEFredistAuthor.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CEFredistAuthor.Location = new System.Drawing.Point(89, 220);
+            this.CEFredistAuthor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.CEFredistAuthor.Name = "CEFredistAuthor";
             this.CEFredistAuthor.Size = new System.Drawing.Size(270, 15);
             this.CEFredistAuthor.TabIndex = 10;
@@ -386,10 +467,11 @@
             // 
             // pbCEF
             // 
-            this.pbCEF.Image = global::TS3VersionChecker.Properties.Resources.logo;
-            this.pbCEF.Location = new System.Drawing.Point(6, 96);
+            this.pbCEF.Image = ((System.Drawing.Image)(resources.GetObject("pbCEF.Image")));
+            this.pbCEF.Location = new System.Drawing.Point(7, 111);
+            this.pbCEF.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pbCEF.Name = "pbCEF";
-            this.pbCEF.Size = new System.Drawing.Size(64, 64);
+            this.pbCEF.Size = new System.Drawing.Size(75, 74);
             this.pbCEF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbCEF.TabIndex = 8;
             this.pbCEF.TabStop = false;
@@ -397,7 +479,8 @@
             // CEFLink
             // 
             this.CEFLink.AutoSize = true;
-            this.CEFLink.Location = new System.Drawing.Point(76, 136);
+            this.CEFLink.Location = new System.Drawing.Point(89, 157);
+            this.CEFLink.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.CEFLink.Name = "CEFLink";
             this.CEFLink.Size = new System.Drawing.Size(212, 15);
             this.CEFLink.TabIndex = 7;
@@ -408,8 +491,9 @@
             // CEFVersion
             // 
             this.CEFVersion.AutoSize = true;
-            this.CEFVersion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CEFVersion.Location = new System.Drawing.Point(76, 106);
+            this.CEFVersion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.CEFVersion.Location = new System.Drawing.Point(89, 122);
+            this.CEFVersion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.CEFVersion.Name = "CEFVersion";
             this.CEFVersion.Size = new System.Drawing.Size(126, 15);
             this.CEFVersion.TabIndex = 5;
@@ -418,8 +502,9 @@
             // CEFAuthor
             // 
             this.CEFAuthor.AutoSize = true;
-            this.CEFAuthor.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.CEFAuthor.Location = new System.Drawing.Point(76, 121);
+            this.CEFAuthor.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CEFAuthor.Location = new System.Drawing.Point(89, 140);
+            this.CEFAuthor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.CEFAuthor.Name = "CEFAuthor";
             this.CEFAuthor.Size = new System.Drawing.Size(138, 15);
             this.CEFAuthor.TabIndex = 6;
@@ -427,10 +512,11 @@
             // 
             // pbSVG
             // 
-            this.pbSVG.Image = global::TS3VersionChecker.Properties.Resources.svg;
-            this.pbSVG.Location = new System.Drawing.Point(6, 25);
+            this.pbSVG.Image = ((System.Drawing.Image)(resources.GetObject("pbSVG.Image")));
+            this.pbSVG.Location = new System.Drawing.Point(7, 29);
+            this.pbSVG.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pbSVG.Name = "pbSVG";
-            this.pbSVG.Size = new System.Drawing.Size(64, 64);
+            this.pbSVG.Size = new System.Drawing.Size(75, 74);
             this.pbSVG.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbSVG.TabIndex = 4;
             this.pbSVG.TabStop = false;
@@ -438,8 +524,9 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(3, 4);
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(4, 5);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(88, 15);
             this.label4.TabIndex = 0;
@@ -448,7 +535,8 @@
             // SVGLink
             // 
             this.SVGLink.AutoSize = true;
-            this.SVGLink.Location = new System.Drawing.Point(76, 74);
+            this.SVGLink.Location = new System.Drawing.Point(89, 85);
+            this.SVGLink.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.SVGLink.Name = "SVGLink";
             this.SVGLink.Size = new System.Drawing.Size(164, 15);
             this.SVGLink.TabIndex = 3;
@@ -459,8 +547,9 @@
             // SVGVersion
             // 
             this.SVGVersion.AutoSize = true;
-            this.SVGVersion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SVGVersion.Location = new System.Drawing.Point(76, 29);
+            this.SVGVersion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.SVGVersion.Location = new System.Drawing.Point(89, 33);
+            this.SVGVersion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.SVGVersion.Name = "SVGVersion";
             this.SVGVersion.Size = new System.Drawing.Size(58, 15);
             this.SVGVersion.TabIndex = 1;
@@ -469,8 +558,9 @@
             // SVGAuthor
             // 
             this.SVGAuthor.AutoSize = true;
-            this.SVGAuthor.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.SVGAuthor.Location = new System.Drawing.Point(76, 44);
+            this.SVGAuthor.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.SVGAuthor.Location = new System.Drawing.Point(89, 51);
+            this.SVGAuthor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.SVGAuthor.Name = "SVGAuthor";
             this.SVGAuthor.Size = new System.Drawing.Size(271, 30);
             this.SVGAuthor.TabIndex = 2;
@@ -479,13 +569,14 @@
             // 
             // About
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(449, 221);
+            this.ClientSize = new System.Drawing.Size(524, 255);
             this.Controls.Add(this.tcLayout);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "About";
@@ -498,6 +589,7 @@
             this.tbLibraries.ResumeLayout(false);
             this.libPanel.ResumeLayout(false);
             this.libPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbNancy)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbJson)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbProtoBuf)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbNaCl)).EndInit();
@@ -547,5 +639,9 @@
         private System.Windows.Forms.LinkLabel JsonLink;
         private System.Windows.Forms.Label JsonAuthor;
         private System.Windows.Forms.Label JsonVersion;
+        private System.Windows.Forms.PictureBox pbNancy;
+        private System.Windows.Forms.LinkLabel NancyLink;
+        private System.Windows.Forms.Label NancyAuthor;
+        private System.Windows.Forms.Label NancyVersion;
     }
 }

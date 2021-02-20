@@ -73,6 +73,16 @@ namespace TS3VersionChecker.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _8e00fa6da668702f8b73ac4caebfbee4 {
+            get {
+                object obj = ResourceManager.GetObject("8e00fa6da668702f8b73ac4caebfbee4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Chromium_Embedded_Framework_Logo {
             get {
                 object obj = ResourceManager.GetObject("Chromium_Embedded_Framework_Logo", resourceCulture);

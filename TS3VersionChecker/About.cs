@@ -59,6 +59,11 @@ namespace TS3VersionChecker
             System.Diagnostics.Process.Start("https://www.newtonsoft.com/json");
         }
 
+        private void NancyLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://nancyfx.org");
+        }
+
         void addScrollBar()
         {
             ScrollBar vScrollBar1 = new VScrollBar();

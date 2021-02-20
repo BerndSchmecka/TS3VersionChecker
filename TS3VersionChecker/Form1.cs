@@ -1,29 +1,14 @@
-﻿using BorderlessForm;
-using CefSharp;
+﻿using CefSharp;
 using CefSharp.WinForms;
+using Nancy.Json;
 using Newtonsoft.Json;
-using ProtoBuf;
-using Svg;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Management;
 using System.Net;
-using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Security.AccessControl;
-using System.Security.Principal;
 using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Web.Script.Serialization;
 using System.Windows.Forms;
 
 namespace TS3VersionChecker
@@ -115,7 +100,7 @@ namespace TS3VersionChecker
             DateTime buildDate = new DateTime(2000, 1, 1)
                                     .AddDays(version.Build).AddSeconds(version.Revision * 2);
             Int64 buildNumber = (Int64)(buildDate.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
-            string buildName = "2.0.0-exp.5";
+            string buildName = "2.0.0-exp.6";
             string displayableVersion = buildName + " [Build: " + buildNumber + "]";
             string displayableVersion2 = $"{version} ({buildDate})";
 
@@ -297,7 +282,7 @@ namespace TS3VersionChecker
                 Int32 lastUNIX = (Int32)(lastModified.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
                 Int32 currUNIX = (Int32)(currDate.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
 
-                TimeZone localZone = TimeZone.CurrentTimeZone;
+                TimeZoneInfo localZone = TimeZoneInfo.Local;
 
                 //lblAvailVers.Text = getStatusCode(webResponse);
 
@@ -334,7 +319,7 @@ namespace TS3VersionChecker
                 DateTime last5Modified = DateTime.ParseExact(response.GetResponseHeader("Last-Modified"), "r", null);
                 Int32 last5UNIX = (Int32)(last5Modified.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
 
-                TimeZone localZone = TimeZone.CurrentTimeZone;
+                TimeZoneInfo localZone = TimeZoneInfo.Local;
 
                 udbfhttp = response.GetResponseHeader("Last-Modified");
                 udbflocal = Form1.TranslatedLocalDayOfWeek(last5Modified) + ", " + last5Modified.ToLocalTime().ToString() + " " + (localZone.IsDaylightSavingTime(last5Modified) ? localZone.DaylightName : localZone.StandardName);
@@ -371,7 +356,7 @@ namespace TS3VersionChecker
                 DateTime lastBModified = DateTime.ParseExact(webResponse.GetResponseHeader("Last-Modified"), "r", null);
                 Int32 badgeUNIX = (Int32)(lastBModified.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
 
-                TimeZone localZone = TimeZone.CurrentTimeZone;
+                TimeZoneInfo localZone = TimeZoneInfo.Local;
 
                 bdbhttp = webResponse.GetResponseHeader("Last-Modified");
                 bdblocal = Form1.TranslatedLocalDayOfWeek(lastBModified) + ", " + lastBModified.ToLocalTime().ToString() + " " + (localZone.IsDaylightSavingTime(lastBModified) ? localZone.DaylightName : localZone.StandardName);
