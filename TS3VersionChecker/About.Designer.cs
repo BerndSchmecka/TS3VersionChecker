@@ -360,9 +360,9 @@
             this.CEFredistVersion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CEFredistVersion.Location = new System.Drawing.Point(76, 176);
             this.CEFredistVersion.Name = "CEFredistVersion";
-            this.CEFredistVersion.Size = new System.Drawing.Size(238, 15);
+            this.CEFredistVersion.Size = new System.Drawing.Size(231, 15);
             this.CEFredistVersion.TabIndex = 9;
-            this.CEFredistVersion.Text = "Chromium Embedded Framework 87.1.13";
+            this.CEFredistVersion.Text = "Chromium Embedded Framework 88.2.4";
             // 
             // NaClVersion
             // 
@@ -411,9 +411,9 @@
             this.CEFVersion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CEFVersion.Location = new System.Drawing.Point(76, 106);
             this.CEFVersion.Name = "CEFVersion";
-            this.CEFVersion.Size = new System.Drawing.Size(109, 15);
+            this.CEFVersion.Size = new System.Drawing.Size(126, 15);
             this.CEFVersion.TabIndex = 5;
-            this.CEFVersion.Text = "CefSharp 87.1.132";
+            this.CEFVersion.Text = "CefSharp 88.2.40-pre";
             // 
             // CEFAuthor
             // 
