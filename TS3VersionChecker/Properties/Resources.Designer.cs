@@ -213,6 +213,16 @@ namespace TS3VersionChecker.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap rebex_labs {
+            get {
+                object obj = ResourceManager.GetObject("rebex-labs", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap salt {
             get {
                 object obj = ResourceManager.GetObject("salt", resourceCulture);

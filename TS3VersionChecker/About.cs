@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TS3VersionChecker
@@ -46,7 +39,7 @@ namespace TS3VersionChecker
 
         private void NaClLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://github.com/adamcaudill/libsodium-net");
+            System.Diagnostics.Process.Start("https://labs.rebex.net/curves");
         }
 
         private void ProtoBufLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

@@ -1,5 +1,6 @@
 ﻿using CefSharp;
 using CefSharp.WinForms;
+using Rebex.Security.Cryptography;
 using System;
 using System.Data;
 using System.IO;
@@ -176,8 +177,9 @@ namespace TS3VersionChecker
             string name = inputValues[0], platform = inputValues[1], sign = inputValues[2];
 
             var ver = Encoding.ASCII.GetBytes(platform + name);
-            
-            if (!Sodium.PublicKeyAuth.VerifyDetached(Convert.FromBase64String(sign), ver, publicKey))
+            Ed25519 ed = new Ed25519();
+            ed.FromPublicKey(publicKey);
+            if (!ed.VerifyMessage(ver, Convert.FromBase64String(sign)))
             {
                 return '\u2718';
             }

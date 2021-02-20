@@ -392,10 +392,10 @@
             this.NaClLink.Location = new System.Drawing.Point(89, 318);
             this.NaClLink.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.NaClLink.Name = "NaClLink";
-            this.NaClLink.Size = new System.Drawing.Size(259, 15);
+            this.NaClLink.Size = new System.Drawing.Size(159, 15);
             this.NaClLink.TabIndex = 15;
             this.NaClLink.TabStop = true;
-            this.NaClLink.Text = "https://github.com/adamcaudill/libsodium-net";
+            this.NaClLink.Text = "https://labs.rebex.net/curves";
             this.NaClLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.NaClLink_LinkClicked);
             // 
             // pbCEFredist
@@ -428,9 +428,9 @@
             this.NaClAuthor.Location = new System.Drawing.Point(89, 301);
             this.NaClAuthor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.NaClAuthor.Name = "NaClAuthor";
-            this.NaClAuthor.Size = new System.Drawing.Size(88, 15);
+            this.NaClAuthor.Size = new System.Drawing.Size(104, 15);
             this.NaClAuthor.TabIndex = 14;
-            this.NaClAuthor.Text = "by adamcaudill";
+            this.NaClAuthor.Text = "by Rebex CR, s.r.o.";
             // 
             // CEFredistVersion
             // 
@@ -450,9 +450,9 @@
             this.NaClVersion.Location = new System.Drawing.Point(89, 284);
             this.NaClVersion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.NaClVersion.Name = "NaClVersion";
-            this.NaClVersion.Size = new System.Drawing.Size(121, 15);
+            this.NaClVersion.Size = new System.Drawing.Size(163, 15);
             this.NaClVersion.TabIndex = 13;
-            this.NaClVersion.Text = "libsodium-net 0.10.0";
+            this.NaClVersion.Text = "Rebex.Elliptic.Ed25519 1.2.1";
             // 
             // CEFredistAuthor
             // 
