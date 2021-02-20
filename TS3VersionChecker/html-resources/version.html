@@ -68,8 +68,8 @@
         window.addEventListener("contextmenu", e => {
         e.preventDefault();
         const origin = {
-        left: e.pageX,
-        top: e.pageY
+        left: e.clientX,
+        top: e.clientY
         };
         setPosition(origin);
         return false;
