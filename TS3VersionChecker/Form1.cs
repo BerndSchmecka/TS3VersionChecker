@@ -244,7 +244,7 @@ namespace TS3VersionChecker
             form = formRef;
         }
 
-        string[] alpha, beta, server, stable; string udbhttp, udblocal, udbunix, nowhttp, nowlocal, nowunix;
+        string[] alpha, beta, server, stable, stable_linux_x86, alpha_linux_x86, beta_linux_x86; string udbhttp, udblocal, udbunix, nowhttp, nowlocal, nowunix;
         public void uvd3()
         {
             HttpWebRequest webRequest = HttpWebRequest.CreateHttp(Form1.verLink);
@@ -257,9 +257,14 @@ namespace TS3VersionChecker
                 VersionMessage version = ProtoBuf.Serializer.Deserialize<VersionMessage>(webResponse.GetResponseStream());
                 VersionData[] v = version.SubElement;
 
+                string _DEBUG_STR = "";
+
                 foreach(VersionData vers in v)
                 {
-                    if(vers.Channel == "server")
+
+                    _DEBUG_STR += vers.Channel + ": " + vers.Version + " [Build: " + vers.Timestamp + "]\n";
+
+                    if (vers.Channel == "server")
                     {
                         server = new string[]{ (vers.Version + " (" + UnixToLocalTime(vers.Timestamp) + ")"), (vers.Version + " [Build: " + vers.Timestamp + "]")};
                     }
@@ -275,7 +280,24 @@ namespace TS3VersionChecker
                     {
                         alpha = new string[] { (vers.Version + " (" + UnixToLocalTime(vers.Timestamp) + ")"), (vers.Version + " [Build: " + vers.Timestamp + "]") };
                     }
+                    else if (vers.Channel == "stable_linux_x86")
+                    {
+                        stable_linux_x86 = new string[] { (vers.Version + " (" + UnixToLocalTime(vers.Timestamp) + ")"), (vers.Version + " [Build: " + vers.Timestamp + "]") };
+                    }
+                    else if (vers.Channel == "beta_linux_x86")
+                    {
+                        beta_linux_x86 = new string[] { (vers.Version + " (" + UnixToLocalTime(vers.Timestamp) + ")"), (vers.Version + " [Build: " + vers.Timestamp + "]") };
+                    }
+                    else if (vers.Channel == "alpha_linux_x86")
+                    {
+                        alpha_linux_x86 = new string[] { (vers.Version + " (" + UnixToLocalTime(vers.Timestamp) + ")"), (vers.Version + " [Build: " + vers.Timestamp + "]") };
+                    }
                 }
+
+                /* DEBUG */
+                Console.Out.Write(_DEBUG_STR);
+                /* DEBUG */
+
 
                 DateTime lastModified = DateTime.ParseExact(webResponse.GetResponseHeader("Last-Modified"), "r", null);
                 DateTime currDate = DateTime.ParseExact(webResponse.GetResponseHeader("Date"), "r", null);
@@ -387,6 +409,20 @@ namespace TS3VersionChecker
         public string[] getstable()
         {
             return stable;
+        }
+
+        public string[] getstable_linux_x86()
+        {
+            return stable_linux_x86;
+        }
+
+        public string[] getalpha_linux_x86()
+        {
+            return alpha_linux_x86;
+        }
+        public string[] getbeta_linux_x86()
+        {
+            return beta_linux_x86;
         }
         public string getfversion()
         {

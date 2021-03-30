@@ -20,6 +20,10 @@
 					var beta = await requestBtnObj.getbeta();
 					var server = await requestBtnObj.getserver();
 					var stable = await requestBtnObj.getstable();
+					var stable_linux_x86 = await requestBtnObj.getstable_linux_x86();
+					var alpha_linux_x86 = await requestBtnObj.getalpha_linux_x86();
+					var beta_linux_x86 = await requestBtnObj.getbeta_linux_x86();
+
 					var fversion = await requestBtnObj.getfversion();
 					var funix = await requestBtnObj.getfunix();
 					var nowhttp = await requestBtnObj.getnowhttp();
@@ -41,6 +45,10 @@
 					document.getElementById('ts3beta').innerHTML = cbUNIX.checked ? beta[1] : beta[0];
 					document.getElementById('ts3server').innerHTML = cbUNIX.checked ? server[1] : server[0];
 					document.getElementById('ts3stable').innerHTML = cbUNIX.checked ? stable[1] : stable[0];
+					document.getElementById('ts3stable_linux_x86').innerHTML = cbUNIX.checked ? stable_linux_x86[1] : stable_linux_x86[0];
+					document.getElementById('ts3alpha_linux_x86').innerHTML = cbUNIX.checked ? alpha_linux_x86[1] : alpha_linux_x86[0];
+					document.getElementById('ts3beta_linux_x86').innerHTML = cbUNIX.checked ? beta_linux_x86[1] : beta_linux_x86[0];
+
 					document.getElementById('ts5version').innerHTML = fversion;
 					document.getElementById('ts5unix').innerHTML = cbUNIX.checked ? funix : parseUnixTime(funix);
 					document.getElementById('nowhttp').innerHTML = nowhttp;
@@ -126,11 +134,15 @@
                     });
 
 					document.getElementById('displayUNIX').addEventListener('click', async function ()
-                    {
+					{
 						var lalpha = document.getElementById('ts3alpha');
 						var lbeta = document.getElementById('ts3beta');
 						var lserver = document.getElementById('ts3server');
 						var lstable = document.getElementById('ts3stable');
+						var lstable_linux_x86 = document.getElementById('ts3stable_linux_x86');
+						var lalpha_linux_x86 = document.getElementById('ts3alpha_linux_x86');
+						var lbeta_linux_x86 = document.getElementById('ts3beta_linux_x86');
+
 						var lfunix = document.getElementById('ts5unix');
 						var ldate = document.getElementById('listdate');
 						var cbUNIX = document.getElementById('displayUNIX');
@@ -142,6 +154,10 @@
 							lbeta.innerHTML = beta[1];
 							lserver.innerHTML = server[1];
 							lstable.innerHTML = stable[1];
+							lstable_linux_x86.innerHTML = stable_linux_x86[1];
+							lalpha_linux_x86.innerHTML = alpha_linux_x86[1];
+							lbeta_linux_x86.innerHTML = beta_linux_x86[1];
+
 							lfunix.innerHTML = funix;
 							ldate.innerHTML = badgetimestamp;
 						} else {
@@ -149,6 +165,10 @@
 							lbeta.innerHTML = beta[0];
 							lserver.innerHTML = server[0];
 							lstable.innerHTML = stable[0];
+							lstable_linux_x86.innerHTML = stable_linux_x86[0];
+							lalpha_linux_x86.innerHTML = alpha_linux_x86[0];
+							lbeta_linux_x86.innerHTML = beta_linux_x86[0];
+
 							lfunix.innerHTML = parseUnixTime(funix);
 							ldate.innerHTML = parseUnixTime(badgetimestamp);
 						}
