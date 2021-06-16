@@ -146,9 +146,6 @@ namespace TS3VersionChecker
                 case "Sunday":
                     germanDayOfWeek = "Sonntag";
                     break;
-                default:
-                    germanDayOfWeek = "ErrorYouShouldNotSeeThisPleaseReport";
-                    break;
             }
 
             if (!CultureInfo.InstalledUICulture.Name.Contains("DE"))
