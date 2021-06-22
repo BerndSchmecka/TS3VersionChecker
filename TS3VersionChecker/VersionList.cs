@@ -80,68 +80,73 @@ namespace TS3VersionChecker
             HttpWebRequest request = HttpWebRequest.CreateHttp(link);
             request.UserAgent = "Mozilla/5.0";
             WebResponse response = request.GetResponse();
-            StreamReader sr = new StreamReader(response.GetResponseStream());
-            string[] tmp_headers = sr.ReadLine().Split(',');
-            string[] headers = AddToStringArray(tmp_headers, "Valid");
-            DataTable dt = new DataTable();
-            foreach (string header in headers)
+            using (Stream s = response.GetResponseStream())
             {
-                dt.Columns.Add(header);
-            }
-            while (!sr.EndOfStream)
-            {
-                string[] tmp_rows = Regex.Split(sr.ReadLine(), ",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
-                string[] rows = AddToStringArray(tmp_rows, "{nottestedyet}");
-                DataRow dr = dt.NewRow();
-                for (int i = 0; i < headers.Length; i++)
+                using(StreamReader sr = new StreamReader(s))
                 {
-                    dr[i] = rows[i];
-                }
-
-                dr["Valid"] = ValidateVersion(dr);
-
-                dt.Rows.Add(dr);
-            }
-            sr.Close();
-
-            StringBuilder sb = new StringBuilder();
-            StringWriter sw = new StringWriter(sb);
-            //headers    
-            for (int i = 0; i < dt.Columns.Count; i++)
-            {
-                sw.Write(dt.Columns[i]);
-                if (i < dt.Columns.Count - 1)
-                {
-                    sw.Write(",");
-                }
-            }
-            sw.Write(sw.NewLine);
-            foreach (DataRow dr in dt.Rows)
-            {
-                for (int i = 0; i < dt.Columns.Count; i++)
-                {
-                    if (!Convert.IsDBNull(dr[i]))
+                    string[] tmp_headers = sr.ReadLine().Split(',');
+                    string[] headers = AddToStringArray(tmp_headers, "Valid");
+                    DataTable dt = new DataTable();
+                    foreach (string header in headers)
                     {
-                        string value = dr[i].ToString();
-                        if (value.Contains(','))
+                        dt.Columns.Add(header);
+                    }
+                    while (!sr.EndOfStream)
+                    {
+                        string[] tmp_rows = Regex.Split(sr.ReadLine(), ",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
+                        string[] rows = AddToStringArray(tmp_rows, "{nottestedyet}");
+                        DataRow dr = dt.NewRow();
+                        for (int i = 0; i < headers.Length; i++)
                         {
-                            value = String.Format("\"{0}\"", value);
-                            sw.Write(value);
+                            dr[i] = rows[i];
                         }
-                        else
+
+                        dr["Valid"] = ValidateVersion(dr);
+
+                        dt.Rows.Add(dr);
+                    }
+                    sr.Close();
+
+                    StringBuilder sb = new StringBuilder();
+                    StringWriter sw = new StringWriter(sb);
+                    //headers    
+                    for (int i = 0; i < dt.Columns.Count; i++)
+                    {
+                        sw.Write(dt.Columns[i]);
+                        if (i < dt.Columns.Count - 1)
                         {
-                            sw.Write(dr[i].ToString());
+                            sw.Write(",");
                         }
                     }
-                    if (i < dt.Columns.Count - 1)
+                    sw.Write(sw.NewLine);
+                    foreach (DataRow dr in dt.Rows)
                     {
-                        sw.Write(",");
+                        for (int i = 0; i < dt.Columns.Count; i++)
+                        {
+                            if (!Convert.IsDBNull(dr[i]))
+                            {
+                                string value = dr[i].ToString();
+                                if (value.Contains(','))
+                                {
+                                    value = String.Format("\"{0}\"", value);
+                                    sw.Write(value);
+                                }
+                                else
+                                {
+                                    sw.Write(dr[i].ToString());
+                                }
+                            }
+                            if (i < dt.Columns.Count - 1)
+                            {
+                                sw.Write(",");
+                            }
+                        }
+                        sw.Write(sw.NewLine);
                     }
+                    sw.Close();
+                    return sb.ToString();
                 }
-                sw.Write(sw.NewLine);
             }
-            sw.Close();
-            return sb.ToString();
         }
 
         private void DgvVersions_KeyDown(object sender, KeyEventArgs e)
