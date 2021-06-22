@@ -328,7 +328,7 @@
             this.JsonVersion.Name = "JsonVersion";
             this.JsonVersion.Size = new System.Drawing.Size(138, 15);
             this.JsonVersion.TabIndex = 21;
-            this.JsonVersion.Text = "Newtonsoft.Json 12.0.3";
+            this.JsonVersion.Text = "Newtonsoft.Json 13.0.1";
             // 
             // pbProtoBuf
             // 
@@ -371,9 +371,9 @@
             this.ProtoBufVersion.Location = new System.Drawing.Point(89, 365);
             this.ProtoBufVersion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ProtoBufVersion.Name = "ProtoBufVersion";
-            this.ProtoBufVersion.Size = new System.Drawing.Size(118, 15);
+            this.ProtoBufVersion.Size = new System.Drawing.Size(125, 15);
             this.ProtoBufVersion.TabIndex = 17;
-            this.ProtoBufVersion.Text = "protobuf-net 3.0.73";
+            this.ProtoBufVersion.Text = "protobuf-net 3.0.101";
             // 
             // pbNaCl
             // 
@@ -439,9 +439,9 @@
             this.CEFredistVersion.Location = new System.Drawing.Point(89, 203);
             this.CEFredistVersion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.CEFredistVersion.Name = "CEFredistVersion";
-            this.CEFredistVersion.Size = new System.Drawing.Size(231, 15);
+            this.CEFredistVersion.Size = new System.Drawing.Size(238, 15);
             this.CEFredistVersion.TabIndex = 9;
-            this.CEFredistVersion.Text = "Chromium Embedded Framework 88.2.4";
+            this.CEFredistVersion.Text = "Chromium Embedded Framework 91.1.21";
             // 
             // NaClVersion
             // 
@@ -495,9 +495,9 @@
             this.CEFVersion.Location = new System.Drawing.Point(89, 122);
             this.CEFVersion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.CEFVersion.Name = "CEFVersion";
-            this.CEFVersion.Size = new System.Drawing.Size(126, 15);
+            this.CEFVersion.Size = new System.Drawing.Size(109, 15);
             this.CEFVersion.TabIndex = 5;
-            this.CEFVersion.Text = "CefSharp 88.2.40-pre";
+            this.CEFVersion.Text = "CefSharp 91.1.210";
             // 
             // CEFAuthor
             // 

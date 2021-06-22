@@ -107,7 +107,7 @@ namespace TS3VersionChecker
             dispVer1 = displayableVersion;
             dispVer2 = displayableVersion2;
 
-            this.Text = this.Text + " " + displayableVersion;
+            this.Text = $"{this.Text} {displayableVersion}";
 
             tsslblVersionAddress.Text = verLink;
             tsslblBadgeAddress.Text = badgeLink;
@@ -216,8 +216,7 @@ namespace TS3VersionChecker
 
             using (var streamWriter = new StreamWriter(request.GetRequestStream()))
             {
-                string json = "{\"tsChatId\":\"" + usertag + "\"}";
-
+                string json = $"{{\"tsChatId\":\"{usertag}\"}}";
                 streamWriter.Write(json);
             }
 
@@ -225,9 +224,7 @@ namespace TS3VersionChecker
             using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
             {
                 var result = streamReader.ReadToEnd();
-
                 dynamic de_ser_obj = JsonConvert.DeserializeObject(result);
-
                 return de_ser_obj.matrixId;
             }
         }
@@ -241,7 +238,7 @@ namespace TS3VersionChecker
             form = formRef;
         }
 
-        string[] alpha, beta, server, stable, stable_linux_x86, alpha_linux_x86, beta_linux_x86; string udbhttp, udblocal, udbunix, nowhttp, nowlocal, nowunix;
+        Tuple<string, string> alpha, beta, server, stable, stable_linux_x86, alpha_linux_x86, beta_linux_x86; string udbhttp, udblocal, udbunix, nowhttp, nowlocal, nowunix;
         public void uvd3()
         {
             HttpWebRequest webRequest = HttpWebRequest.CreateHttp(Form1.verLink);
@@ -254,47 +251,42 @@ namespace TS3VersionChecker
                 VersionMessage version = ProtoBuf.Serializer.Deserialize<VersionMessage>(webResponse.GetResponseStream());
                 VersionData[] v = version.SubElement;
 
-                string _DEBUG_STR = "";
-
                 foreach(VersionData vers in v)
                 {
+                    Tuple<string,string> receivedVersion = new Tuple<string, string>($"{vers.Version} ({UnixToLocalTime(vers.Timestamp)})", $"{vers.Version} [Build: {vers.Timestamp}]");
 
-                    _DEBUG_STR += vers.Channel + ": " + vers.Version + " [Build: " + vers.Timestamp + "]\n";
+                    //Since TeamSpeak temporarily removed the *_linux_x86 stuff, i temporarily set them to unassigned
+                    Tuple<string,string> unass = Tuple.Create($"0.0.0 ({UnixToLocalTime(0)})", "0.0.0 [Build: 0]");
+                    stable_linux_x86 = unass;
+                    beta_linux_x86 = unass;
+                    alpha_linux_x86 = unass;
 
-                    if (vers.Channel == "server")
+
+                    switch (vers.Channel)
                     {
-                        server = new string[]{ (vers.Version + " (" + UnixToLocalTime(vers.Timestamp) + ")"), (vers.Version + " [Build: " + vers.Timestamp + "]")};
-                    }
-                    else if (vers.Channel == "stable")
-                    {
-                        stable = new string[] { (vers.Version + " (" + UnixToLocalTime(vers.Timestamp) + ")"), (vers.Version + " [Build: " + vers.Timestamp + "]") };
-                    }
-                    else if (vers.Channel == "beta")
-                    {
-                        beta = new string[] { (vers.Version + " (" + UnixToLocalTime(vers.Timestamp) + ")"), (vers.Version + " [Build: " + vers.Timestamp + "]") };
-                    }
-                    else if (vers.Channel == "alpha")
-                    {
-                        alpha = new string[] { (vers.Version + " (" + UnixToLocalTime(vers.Timestamp) + ")"), (vers.Version + " [Build: " + vers.Timestamp + "]") };
-                    }
-                    else if (vers.Channel == "stable_linux_x86")
-                    {
-                        stable_linux_x86 = new string[] { (vers.Version + " (" + UnixToLocalTime(vers.Timestamp) + ")"), (vers.Version + " [Build: " + vers.Timestamp + "]") };
-                    }
-                    else if (vers.Channel == "beta_linux_x86")
-                    {
-                        beta_linux_x86 = new string[] { (vers.Version + " (" + UnixToLocalTime(vers.Timestamp) + ")"), (vers.Version + " [Build: " + vers.Timestamp + "]") };
-                    }
-                    else if (vers.Channel == "alpha_linux_x86")
-                    {
-                        alpha_linux_x86 = new string[] { (vers.Version + " (" + UnixToLocalTime(vers.Timestamp) + ")"), (vers.Version + " [Build: " + vers.Timestamp + "]") };
+                        case "server":
+                            server = receivedVersion;
+                            break;
+                        case "stable":
+                            stable = receivedVersion;
+                            break;
+                        case "beta":
+                            beta = receivedVersion;
+                            break;
+                        case "alpha":
+                            alpha = receivedVersion;
+                            break;
+                        case "stable_linux_x86":
+                            stable_linux_x86 = receivedVersion;
+                            break;
+                        case "beta_linux_x86":
+                            beta_linux_x86 = receivedVersion;
+                            break;
+                        case "alpha_linux_x86":
+                            alpha_linux_x86 = receivedVersion;
+                            break;
                     }
                 }
-
-                /* DEBUG */
-                Console.Out.Write(_DEBUG_STR);
-                /* DEBUG */
-
 
                 DateTime lastModified = DateTime.ParseExact(webResponse.GetResponseHeader("Last-Modified"), "r", null);
                 DateTime currDate = DateTime.ParseExact(webResponse.GetResponseHeader("Date"), "r", null);
@@ -383,88 +375,30 @@ namespace TS3VersionChecker
             }
         }
 
-        public long getbadgetimestamp()
-        {
-            return badge_timestamp;
-        }
-        public BadgeData[] getbadgedata()
-        {
-            return badgedata;
-        }
-        public string[] getalpha()
-        {
-            return alpha;
-        }
-        public string[] getbeta()
-        {
-            return beta;
-        }
-        public string[] getserver()
-        {
-            return server;
-        }
-        public string[] getstable()
-        {
-            return stable;
-        }
+        public long getbadgetimestamp() => badge_timestamp;
+        public BadgeData[] getbadgedata() => badgedata;
 
-        public string[] getstable_linux_x86()
-        {
-            return stable_linux_x86;
-        }
-
-        public string[] getalpha_linux_x86()
-        {
-            return alpha_linux_x86;
-        }
-        public string[] getbeta_linux_x86()
-        {
-            return beta_linux_x86;
-        }
-        public string getfversion()
-        {
-            return fiveversion;
-        }
-        public string getfunix()
-        {
-            return fiveunix;
-        }
-        public string getudbhttp()
-        {
-            return udbhttp;
-        }
-        public string getudblocal()
-        {
-            return udblocal;
-        }
-        public string getudbunix()
-        {
-            return udbunix;
-        }
-        public string getnowhttp()
-        {
-            return nowhttp;
-        }
-        public string getnowlocal()
-        {
-            return nowlocal;
-        }
-        public string getnowunix()
-        {
-            return nowunix;
-        }
-        public string getudbfhttp()
-        {
-            return udbfhttp;
-        }
-        public string getudbflocal()
-        {
-            return udbflocal;
-        }
-        public string getudbfunix()
-        {
-            return udbfunix;
-        }
+        public Tuple<string, string> getalpha() => alpha;
+        public Tuple<string, string> getbeta() => beta;
+        public Tuple<string, string> getserver() => server;
+        public Tuple<string, string> getstable() => stable;
+        public Tuple<string, string> getstable_linux_x86() => stable_linux_x86;
+        public Tuple<string, string> getalpha_linux_x86() => alpha_linux_x86;
+        public Tuple<string, string> getbeta_linux_x86() => beta_linux_x86;
+        public string getfversion() => fiveversion;
+        public string getfunix() => fiveunix;
+        public string getudbhttp() => udbhttp;
+        public string getudblocal() => udblocal;
+        public string getudbunix() => udbunix;
+        public string getnowhttp() => nowhttp;
+        public string getnowlocal() => nowlocal;
+        public string getnowunix() => nowunix;
+        public string getudbfhttp() => udbfhttp;
+        public string getudbflocal() => udbflocal;
+        public string getudbfunix() => udbfunix;
+        public string getbdbhttp() => bdbhttp;
+        public string getbdblocal() => bdblocal;
+        public string getbdbunix() => bdbunix;
 
         public void requestsrv()
         {
@@ -483,29 +417,13 @@ namespace TS3VersionChecker
                     }
                 });
         }
-
-        public string getbdbhttp()
-        {
-            return bdbhttp;
-        }
-        public string getbdblocal()
-        {
-            return bdblocal;
-        }
-        public string getbdbunix()
-        {
-            return bdbunix;
-        }
     }
 
     public class FeedbackInteraction
     {
 
         Form1 form;
-        public FeedbackInteraction(Form1 formRef)
-        {
-            form = formRef;
-        }
+        public FeedbackInteraction(Form1 formRef) => form = formRef;
 
         public void openform()
         {
@@ -519,10 +437,7 @@ namespace TS3VersionChecker
     public class NickResolver
     {
         Form1 form;
-        public NickResolver(Form1 formRef)
-        {
-            form = formRef;
-        }
+        public NickResolver(Form1 formRef) => form = formRef;
 
         public string resolvenick(string ntext)
         {
@@ -541,10 +456,7 @@ namespace TS3VersionChecker
     public class MatrixResolver
     {
         Form1 form;
-        public MatrixResolver(Form1 formRef)
-        {
-            form = formRef;
-        }
+        public MatrixResolver(Form1 formRef) => form = formRef;
 
         public string resolvematrix(string mtext)
         {
@@ -609,19 +521,13 @@ namespace TS3VersionChecker
         }
 
         public bool OnContextMenuCommand(IWebBrowser browserControl, CefSharp.IBrowser browser, IFrame frame, IContextMenuParams parameters,
-            CefMenuCommand commandId, CefEventFlags eventFlags)
-        {
-            return false;
-        }
+            CefMenuCommand commandId, CefEventFlags eventFlags) => false;
 
         public void OnContextMenuDismissed(IWebBrowser browserControl, CefSharp.IBrowser browser, IFrame frame)
         {
         }
 
-        public bool RunContextMenu(IWebBrowser chromiumWebBrowser, IBrowser browser, IFrame frame, IContextMenuParams parameters, IMenuModel model, IRunContextMenuCallback callback)
-        {
-            return false;
-        }
+        public bool RunContextMenu(IWebBrowser chromiumWebBrowser, IBrowser browser, IFrame frame, IContextMenuParams parameters, IMenuModel model, IRunContextMenuCallback callback) => false;
     }
 
 }
