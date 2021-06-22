@@ -75,25 +75,12 @@ namespace TS3VersionChecker
             this.Text = this.Text + " " + displayableVersion;
         }
 
-        internal String DownloadCSVFromGitHub(string link)
+        internal string DownloadCSVFromGithub(string link)
         {
             HttpWebRequest request = HttpWebRequest.CreateHttp(link);
             request.UserAgent = "Mozilla/5.0";
             WebResponse response = request.GetResponse();
-            FileStream fs = File.Create(Path.GetTempPath() + "ver.csv");
-            Stream s = response.GetResponseStream();
-            //s.Seek(0, SeekOrigin.Begin);
-            s.CopyTo(fs);
-            s.Close();
-            fs.Close();
-            DataTable dt = ConvertCSVtoDataTable(Path.GetTempPath() + "ver.csv");
-            File.Delete(Path.GetTempPath() + "ver.csv");
-            return ToCSV(dt);
-        }
-
-        private DataTable ConvertCSVtoDataTable(string strFilePath)
-        {
-            StreamReader sr = new StreamReader(strFilePath);
+            StreamReader sr = new StreamReader(response.GetResponseStream());
             string[] tmp_headers = sr.ReadLine().Split(',');
             string[] headers = AddToStringArray(tmp_headers, "Valid");
             DataTable dt = new DataTable();
@@ -116,26 +103,22 @@ namespace TS3VersionChecker
                 dt.Rows.Add(dr);
             }
             sr.Close();
-            return dt;
-        }
 
-        private String ToCSV(DataTable dtDataTable)
-        {
             StringBuilder sb = new StringBuilder();
             StringWriter sw = new StringWriter(sb);
             //headers    
-            for (int i = 0; i < dtDataTable.Columns.Count; i++)
+            for (int i = 0; i < dt.Columns.Count; i++)
             {
-                sw.Write(dtDataTable.Columns[i]);
-                if (i < dtDataTable.Columns.Count - 1)
+                sw.Write(dt.Columns[i]);
+                if (i < dt.Columns.Count - 1)
                 {
                     sw.Write(",");
                 }
             }
             sw.Write(sw.NewLine);
-            foreach (DataRow dr in dtDataTable.Rows)
+            foreach (DataRow dr in dt.Rows)
             {
-                for (int i = 0; i < dtDataTable.Columns.Count; i++)
+                for (int i = 0; i < dt.Columns.Count; i++)
                 {
                     if (!Convert.IsDBNull(dr[i]))
                     {
@@ -150,7 +133,7 @@ namespace TS3VersionChecker
                             sw.Write(dr[i].ToString());
                         }
                     }
-                    if (i < dtDataTable.Columns.Count - 1)
+                    if (i < dt.Columns.Count - 1)
                     {
                         sw.Write(",");
                     }
@@ -222,7 +205,7 @@ public class VerListTable
         string data;
         try
         {
-            data = form.DownloadCSVFromGitHub(Form1.verGitLink);
+            data = form.DownloadCSVFromGithub(Form1.verGitLink);
         }
         catch (Exception ex)
         {
