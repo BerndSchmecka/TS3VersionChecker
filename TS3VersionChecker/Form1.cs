@@ -55,27 +55,27 @@ namespace TS3VersionChecker
                 var repo = e.ObjectRepository;
                 if (e.ObjectName == "versionListObj")
                 {
-                    repo.Register("versionListObj", new JSVerList(this), isAsync: true);
+                    repo.Register("versionListObj", new JSVerList(this));
                 }
                 if (e.ObjectName == "requestBtnObj")
                 {
-                    repo.Register("requestBtnObj", new JSInteraction(this), isAsync: true);
+                    repo.Register("requestBtnObj", new JSInteraction(this));
                 }
                 if (e.ObjectName == "feedbackBtnObj")
                 {
-                    repo.Register("feedbackBtnObj", new FeedbackInteraction(this), isAsync: true);
+                    repo.Register("feedbackBtnObj", new FeedbackInteraction(this));
                 }
                 if (e.ObjectName == "nickResolveObj")
                 {
-                    repo.Register("nickResolveObj", new NickResolver(this), isAsync: true);
+                    repo.Register("nickResolveObj", new NickResolver(this));
                 }
                 if (e.ObjectName == "matrixResolveObj")
                 {
-                    repo.Register("matrixResolveObj", new MatrixResolver(this), isAsync: true);
+                    repo.Register("matrixResolveObj", new MatrixResolver(this));
                 }
                 if (e.ObjectName == "contextMenuObj")
                 {
-                    repo.Register("contextMenuObj", new ContextMenuObject(this), isAsync: true);
+                    repo.Register("contextMenuObj", new ContextMenuObject(this));
                 }
             };
         }

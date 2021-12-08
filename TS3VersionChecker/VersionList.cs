@@ -47,11 +47,11 @@ namespace TS3VersionChecker
                 var repo = e.ObjectRepository;
                 if (e.ObjectName == "verList")
                 {
-                    repo.Register("verList", new VerListTable(this), isAsync: true);
+                    repo.Register("verList", new VerListTable(this));
                 }
                 if (e.ObjectName == "conMenu")
                 {
-                    repo.Register("conMenu", new ContextMenuObject(this), isAsync: true);
+                    repo.Register("conMenu", new ContextMenuObject(this));
                 }
             };
         }
