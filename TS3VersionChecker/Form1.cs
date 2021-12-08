@@ -100,7 +100,7 @@ namespace TS3VersionChecker
             DateTime buildDate = new DateTime(2000, 1, 1)
                                     .AddDays(version.Build).AddSeconds(version.Revision * 2);
             Int64 buildNumber = (Int64)(buildDate.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
-            string buildName = "2.0.0-exp.6";
+            string buildName = "2.0.0-bootstrap_test.1";
             string displayableVersion = buildName + " [Build: " + buildNumber + "]";
             string displayableVersion2 = $"{version} ({buildDate})";
 

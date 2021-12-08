@@ -128,6 +128,9 @@
     <None Update="html-resources\version.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+	<None Update="html-resources\bootstrap-5.1.3-dist\**">
+	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	</None>
   </ItemGroup>
   
 </Project>
